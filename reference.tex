@@ -1,0 +1,790 @@
+\documentclass[a4paper,landscape]{article}
+\include{config/config}
+\include{config/listing}
+\title{Reference\_ICPC}
+\author{Racso Fractal}
+\date{January 2026}
+\lstset{ style = cpp }
+\pagenumbering{arabic}
+
+\begin{document}
+\twocolumn
+
+\begin{titlepage}
+\newgeometry{
+  top = 1cm,
+  bottom = 1cm,
+  left = 1cm,
+  right = 2.1cm,
+}
+
+\centering\Large
+\begin{minipage}{\textwidth}
+  \centering
+  \begin{minipage}{0.2\textwidth}
+    \includegraphics[width=\textwidth]{media/titlepage/CPCFI.png}
+  \end{minipage}%
+  \begin{minipage}{0.6\textwidth}
+    \centering
+    \textbf{National Autonomous University of México} \\
+    School of Engineering \\
+    Division of Electrical Engineering
+  \end{minipage}%
+  \begin{minipage}{0.2\textwidth}
+    \includegraphics[width=0.75\textwidth]{media/titlepage/FI_logo(rojo).jpg}
+  \end{minipage}
+\end{minipage}
+
+\vfill
+
+{\Huge \textbf{ICPC 2026 Reference}}\\[0.2cm]
+\textit{CPCFI UNAM} \\
+
+\vfill
+
+{\Huge \textbf{$>:)$}}\\[0.2cm]
+RacsoFractal, zum, edwardsal17
+
+\vfill
+
+\end{titlepage}
+
+\restoregeometry
+
+\begin{twocolumn}
+  \tableofcontents
+\end{twocolumn}
+
+\twocolumn\newpage\newpage
+
+\section{Template}
+
+\lstinputlisting[
+  style=cpp,
+  caption={Racso's template.},
+  label=lst:template  
+]{code/misc/template.cpp}
+
+\section{C++ Sintaxis}
+
+\subsection{Compilation sentences}
+
+To compile and execute in C++:
+
+\begin{mdframed}[style=terminal]
+\ttfamily\upshape\color{bashLetterColor}\footnotesize
+g++-13 -Wall -o solucion.exe solucion.cpp \\
+g++ -std=c++20 -Wall -o main a.cpp
+./solucion.exe $<$ input.txt $>$ output.txt
+\end{mdframed}
+
+To compile and execute in Java:
+
+\begin{mdframed}[style=terminal]
+\ttfamily\upshape\color{bashLetterColor}\footnotesize
+javac -Xlint Solucion.java \\
+java Solucion $<$ input.txt $>$ output.txt
+\end{mdframed}
+
+To execute in Python (two options):
+
+\begin{mdframed}[style=terminal]
+\ttfamily\upshape\color{bashLetterColor}\footnotesize
+python3 solucion.py < input.txt > output.txt\\
+pypy3 solucion.py < input.txt > output.txt
+\end{mdframed}
+
+\subsection{*BS \& friends}
+
+\subsection{*STL DS Usage}
+
+\subsection{*Strings methods}
+
+\subsection{Bit Manipulation Cheat Sheet}
+
+\begin{multicols}{2}
+
+\textbf{Bitwise operators:}
+
+\begin{itemize}
+    \item \texttt{\&} (AND): Sets each bit to 1 if both bits are 1.
+    \item \texttt{|} (OR): Sets each bit to 1 if al teast one bit is 1.
+    \item \texttt{\^} (XOR): Sets each bit to 1 if bits are different.
+    \item \texttt{$\sim$} (NOT): Inverts all bits.
+    \item \texttt{<<} (Left shift): Shifts bits left, fills with 0.
+    \item \texttt{>>} (Right shift): Shifts bits right.
+\end{itemize}
+
+\textbf{Basic Bit Tasks:}
+
+\begin{itemize}
+    \item Get bit: \texttt{(n \& (1 << i)) != 0}
+    \item Set bit: \texttt{n | (1 << i)}
+    \item Clear bit: \texttt{n \& $\sim$(1 << i)}
+    \item Toggle bit: \texttt{n \^ (1 << i)}
+    \item Clear LSB: \texttt{n \& (n - 1)}
+    \item Get LSB: \texttt{n \& -n}
+\end{itemize}
+
+\textbf{Set Operations:}
+
+\begin{itemize}
+    \item Subset check: \texttt{(A \& B) == B}
+    \item Set union: \texttt{A | B}
+    \item Set intersection: \texttt{A \& B}
+    \item Set difference: \texttt{A \& $\sim$B}
+    \item Toggle subset: \texttt{A \^ B}
+\end{itemize}
+
+\end{multicols}
+
+Gray code: \texttt{G = B $\oplus$ (B >> 1)}
+
+\subsection{*Pragmas}
+
+\subsection{Comparing Floats}
+
+\begin{lstlisting}[
+    style=cpp,
+    caption={Check if two real numbers are equal using an épsilon scope.},
+    label=lst:comparing-floats
+]
+long double a, b, EPS = 1e-9;
+if( abs(a - b) < EPs ) {
+    // 'a' equals 'b'
+}
+\end{lstlisting}
+
+\subsection{Ceil}
+
+\[ \Bigl\lceil \frac{a}{b} \Bigr\rceil = \frac{a + b - 1}{b}\]
+
+(Originally I though $\lceil \frac{a}{b} \rceil = \frac{a - 1}{b}+1$, but this calculates the wrong way in the cases where $a = 0$)
+
+\begin{lstlisting}[
+    style=cpp,
+    caption={A way to do ceil operation between integers without making explicit conversions. \texttt{a} and \texttt{b} are \texttt{int}, but the operation \texttt{a+b-1} can cause an overflow, so they must be casted into \texttt{long long} to avoid this. The result must be \texttt{int} anyway.},
+    label=lst:ceil
+]
+int myCeil(long long a, long long b) {
+    return (a + b - 1)/b;
+}
+\end{lstlisting}
+
+\section{Miscellaneous}
+
+\subsection{Binary Search}
+
+\lstinputlisting[
+  style=cpp,
+  caption={Classic (Vanilla) implementation of Binary Search. Returns the index where \texttt{target} was found. Binary Search works on $O(log_2(n))$, let $n$ be the size of the container.},
+  label=lst:vanilla-binary-search  
+]{code/misc/binary-search.cpp}
+
+\lstinputlisting[
+  style=cpp,
+  caption={Logarithmic jumps implementation of Binary Search. Returns the index where \texttt{target} was found. Binary Search works on $O(log_2(n))$, let $n$ be the size of the container.},
+  label=lst:logjumps-binary-search  
+]{code/misc/logarithmic-binary-search.cpp}
+
+\lstinputlisting[
+  style=cpp,
+  caption={Binary Search implementation for searching an element in the interval \ensuremath{\big( numbers_{i-1}, numbers_i \big]}. Originally used on Codeforces problem 474 - B (Worms). Returns the index where \texttt{target} was found. Binary Search works on \ensuremath{O(\log_2(n))}, let \ensuremath{n} be the size of the container.},
+  label=lst:worms-binary-search  
+]{code/misc/worms-binary-search.cpp}
+
+\lstinputlisting[
+  style=cpp,
+  caption={Implementation of Binary Search in the Answer. Originally used on CSES problem \textit{Factory Machines}. Binary Search works on \ensuremath{O(\log_2(n))}, let \ensuremath{n} be the size of the container.},
+  label=lst:binary-search-in-the-answer 
+]{code/misc/binary-search-in-the-answer.cpp}
+
+\subsubsection{*Parallel Binary Search}
+
+\subsubsection{*Ternary Search}
+
+\subsection{Kadane's Algorithm}
+
+\lstinputlisting[
+  style=cpp,
+  caption={Uses Kadane's Algorithm to find maximum subarray sum in $O(n)$.},
+  label=lst:kadanes-algorithm
+]{code/misc/kadane.cpp}
+
+\section{Queries}
+
+\subsection{*Prefix Sum 2D}
+
+\subsection{*Sparse Table}
+
+\subsection{*Sqrt Decomposition}
+
+\subsection{*Fenwick Tree}
+
+\subsection{*Fenwick Tree 2D}
+
+\subsection{Segment Tree}
+
+\lstinputlisting[
+  style=cpp,
+  caption={Segment Tree for Dynamic Range \textbf{Minimum} Queries. Racso's Implementation.},
+  label=lst:segment-tree-racso
+]{code/queries/segment-tree-racso.cpp}
+
+\lstinputlisting[
+  style=cpp,
+  caption={Segment Tree for Dynamic Range \textbf{Sum} Queries. Zum's Implementation.},
+  label=lst:segment-tree-zum
+]{code/queries/segment-tree-zum.cpp}
+
+\subsubsection{*2D Segment Tree}
+
+\subsubsection{*Persistent Segment Tree}
+
+\subsubsection{*Lazy Propagation}
+
+\subsection{*Ordered Set}
+
+\subsubsection{Multi-Ordered Set}
+
+\subsection{*Treap}
+
+\subsection{*Trie}
+
+\section{Graph Theory}
+
+\subsection{Breadth-First Search (BFS)}
+
+\lstinputlisting[
+  style=cpp,
+  caption={Iterative implementation of BFS graph traversal over a graph represented as a AdjacencyList on vector of vectors. BFS runs in $O(|V| + |E|)$.},
+  label=lst:bfs
+]{code/graphs/bfs.cpp}
+
+\lstinputlisting[
+  style=cpp,
+  caption={BFS on Grid to find shortest path from an starting point \textit{A} to an end \textit{B}. Once the path is found, it reconstruct it with movements \textit{LRUD}. Works in $O(n \cdot m)$. Originally used on problem \textit{Labyrinth} from CSES.},
+  label=lst:bfs-grid
+]{code/graphs/bfs-grid.cpp}
+
+\subsection{Deep-First Search (DFS)}
+
+\lstinputlisting[
+  style=cpp,
+  caption={Recursive implementation of DFS graph traversal over a graph represented as a AdjacencyList on vector of vectors. DFS runs in $O(|V| + |E|)$.},
+  label=lst:dfs-recursive
+]{code/graphs/dfs-recursive.cpp}
+
+\lstinputlisting[
+  style=cpp,
+  caption={Iterative implementation of DFS graph traversal over a graph represented as a AdjacencyList on vector of vectors. DFS runs in $O(|V| + |E|)$.},
+  label=lst:dfs-iterative
+]{code/graphs/dfs-iterative.cpp}
+
+\lstinputlisting[
+  style=cpp,
+  caption={DFS implementation with a lambda function (adjacency list and visited don't need to be passed thorough argument). DFS runs in $O(|V| + |E|)$.},
+  label=lst:dfs-lambda
+]{code/graphs/dfs-lambda.cpp}
+
+\lstinputlisting[
+  style=cpp,
+  caption={DFS implementation with a lambda function implemented with a map instead of vector of vectors, and a set to track visited nodes. DFS runs in $O(|V| + |E|)$.},
+  label=lst:dfs-lambda-map
+]{code/graphs/dfs-lambda-map.cpp}
+
+\subsection{Shortest Path}
+
+\subsubsection{Dijkstra's Algorithm}
+
+\lstinputlisting[
+  style=cpp,
+  caption={Iterative implementation of Dijkstra's Algorithm for shortest path over a graph represented as a AdjacencyList on vector of vectors. Returns a vector with the shortest path to every other vertex in the graph. $O(|E|\times log_2(|v|))$. doesn't work with negative weights.},
+  label=lst:dijkstra
+]{code/graphs/dijkstra.cpp}
+
+\lstinputlisting[
+  style=cpp,
+  caption={Iterative implementation of Dijkstra's Algorithm as a Lambda Function for shortest path over a graph represented as a AdjacencyList on vector of vectors. Returns a vector with the shortest path to every other vertex in the graph. $O(|E|\times log_2(|V|))$. Doesn't work with negative weights.},
+  label=lst:dijkstra-lambda
+]{code/graphs/dijkstra-lambda.cpp}
+
+\subsubsection{*Floyd-Warshall's Algorithm}
+
+\subsubsection{Bellman–Ford Algorithm}
+
+\lstinputlisting[
+  style=cpp,
+  caption={Finds the shortest route from a source vertex, to every other one in the graph. Works over a list of edges. Runs in $O(|V| \times |E|)$. Can be used to find negative cycles.},
+  label=lst:bellman-ford
+]{code/graphs/bellman-ford.cpp}
+
+\subsection{Minimum Spanning Tree (MST)}
+
+\subsubsection{*Prim's Algorithm}
+
+\subsubsection{*Kruskal's Algorithm}
+
+\subsection{*Bipartite Checking}
+
+\subsection{*Negative Cycles}
+
+\subsection{Topological Sort}
+
+\lstinputlisting[
+  style=cpp,
+  caption={Recursive toposort implementation for unweighted DAG through vvi with DFS with inverted postorder. Runs in $O(|V| \times |E|)$.},
+  label=lst:toposort-dfs
+]{code/graphs/toposort-dfs.cpp}
+
+\lstinputlisting[
+  style=cpp,
+  caption={Kahn's Algorithm for Topological Sorting using BFS and indegree vertex analysis (nodes in a cycle will never have indegree zero). Works over unweighted directed graphs containing cycles through vvi. Runs in $O(|V| \times |E|)$.},
+  label=lst:toposort-kahn
+]{code/graphs/toposort-kahn.cpp}
+
+\subsection{*Disjoint Set Union (DSU)}
+
+\subsection{*Condensation Graph}
+
+\subsection{*Strongly Connected Components (SCC)}
+
+\subsection{*2-SAT}
+
+\subsection{*Bridges and point articulation}
+
+\subsection{Flood Fill}
+
+\lstinputlisting[
+  style=cpp,
+  caption={Traverse a matrix of 'n' x 'm' on grid representation. The matrix is composed of '.' for a valid space (empty), '\#' for a wall, 'T' for a trap, and a number for a treasure. This implementation takes the sum of every treasure in the maze. The condition for moving to the next location is that there are no Traps nearby (up, down, left, right), so the player will never be killed while traversing. It also implements a way to read numerous test cases, but without knowing beforehand how many there are. Runs in $O(n \cdot m)$. Originally used on the problem \textit{Treasures} from \textit{2024-2025 ICPC Bolivia Pre-National Contest}.},
+  label=lst:flood-fill
+]{code/graphs/flood-fill.cpp}
+
+\subsection{Lava Flow (Multi-source BFS)}
+
+\lstinputlisting[
+  style=cpp,
+  caption={Classic Lava Flow problem implementation, where the timer from the starting point \textit{A} needs to be less than every other in the MS-BFS starting in \textit{M} places. Once one edge is reached, the path is reconstructed from the output. Runs in BFS complexity $O(|V| + |E)$. Originally used in the CSES problem \textit{Monsters}.},
+  label=lst:lava-flow
+]{code/graphs/lava-flow.cpp}
+
+\subsection{MaxFlow}
+
+\subsubsection{Dinic's Algorihtm}
+
+\lstinputlisting[
+  style=cpp,
+  caption={Commented template for solving MaxFlow problems with Dinic's algorithm. Works in complexity $O(|V|^2\times|E|)$. In bipartite graphs and graphs with unitary max capacity the complexity turns $O(|E|\times\sqrt{|V|})$.},
+  label=lst:max-flow_template
+]{code/graphs/dinics.cpp}
+
+\paragraph{Download Speed}
+
+How does a particular flow problem looks like?
+Following is the statement for the problem CSES 1694 (Download Speed):
+
+\begin{IOFrame}
+\sffamily\raggedright
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.4em}
+Consider a network consisting of $n$ computers and $m$ connections. Each connection specifies how fast a computer can send data to another computer. \\[0.2cm]
+Kotivalo wants to download some data from a server. What is the maximum speed he can do this, using the connections in the network? \\
+
+\textbf{Input} \\[0.1cm]
+
+\noindent The first input line has two integers $n$ and $m$: the number of computers and connections. The computers are numbered $1,2,\dots,n$. Computer $1$ is the server and computer $n$ is Kotivalo's computer. \\[0.2cm]
+After this, there are $m$ lines describing the connections. Each line has three integers $a$, $b$, and $c$: computer $a$ can send data to computer $b$ at speed $c$. \\
+
+\textbf{Output} \\[0.1cm]
+
+\noindent Print one integer: the maximum speed Kotivalo can download data.
+\end{IOFrame}
+
+\begin{lstlisting}[
+    style=cpp,
+    caption={Main method for solving CSES 1697 Download Speed using MaxFlow template.},
+    label=lst:max-flow_dowload-speed
+]
+int main()
+{
+    fastIO();
+
+    int n, m, u, v, w;
+
+    cin >> n >> m;
+
+    Dinic flow(n+1,1,n); // size n+1 to fix 0-indexed indexes, 1 is the source (server), 'n' is the sink (Kotivalo)
+
+    fori(i,0,m)
+    {
+        cin >> u >> v >> w;
+        flow.addEdge(u,v,w);
+    }
+
+    cout << flow.maxFlow() << endl;
+
+    return 0;
+}
+\end{lstlisting}
+
+\paragraph{Police Chase}
+
+\textbf{Max Flow-Min Cut Theorem:} MaxFlow $=$ MinCut.
+
+Following is the statement for the problem CSES 1695 (Police Chase):
+
+\begin{IOFrame}
+\sffamily\raggedright
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.4em}
+Kaaleppi has just robbed a bank and is now heading to the harbor. However, the police wants to stop him by closing some streets of the city. \\[0.2cm]
+What is the minimum number of streets that should be closed so that there is no route between the bank and the harbor? \\
+
+\textbf{Input} \\[0.1cm]
+
+\noindent The first input line has two integers $n$ and $m$: the number of crossings and streets. The crossings are numbered $1,2,\dots,n$. The bank is located at crossing $1$, and the harbor is located at crossing $n$. \\[0.2cm]
+After this, there are $m$ lines that describing the streets. Each line has two integers $a$ and $b$: there is a street between crossings $a$ and $b$. All streets are two-way streets, and there is at most one street between two crossings. \\
+
+\textbf{Output} \\[0.1cm]
+
+\noindent First print an integer $k$: the minimum number of streets that should be closed. After this, print $k$ lines describing the streets. You can print any valid solution.
+\end{IOFrame}
+
+\begin{lstlisting}[
+    style=cpp,
+    caption={Main method for solving CSES 1695 Police Chase using MaxFlow template.},
+    label=lst:max-flow_police-chase
+]
+int main()
+{
+    fastIO();
+
+    int n, m, u, v;
+    vii minCut;
+
+    cin >> n >> m;
+
+    Dinic flow(n+1,1,n); // size n+1 to fix 0-indexed indexes, 1 is the source (bank), 'n' is the sink (harbor)
+
+    fori(i,0,m)
+    {
+        cin >> u >> v;
+        flow.addEdge(u,v,1);
+        flow.addEdge(v,u,1);
+    }
+
+    flow.maxFlow();
+    minCut = flow.minCut();
+    
+    cout << (sz(minCut)/2) << endl;
+    for(int i = 0; i < sz(minCut); i += 2)
+        cout << minCut[i].fi << " " << minCut[i].se << endl;
+
+    return 0;
+}
+\end{lstlisting}
+
+\paragraph{School Dance}
+
+MaxFlow $=$ MinCut $=$ MaxMatching.
+
+Following is the statement for the problem CSES 1696 (School Dance):
+
+\begin{IOFrame}
+\sffamily\raggedright
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.4em}
+There are n boys and m girls in a school. Next week a school dance will be organized. A dance pair consists of a boy and a girl, and there are k potential pairs. \\[0.2cm]
+Your task is to find out the maximum number of dance pairs and show how this number can be achieved. \\
+
+\textbf{Input} \\[0.1cm]
+
+\noindent The first input line has three integers $n$, $m$ and $k$: the number of boys, girls, and potential pairs. The boys are numbered $1,2,\dots,n$, and the girls are numbered $1,2,\dots,m$. \\[0.2cm]
+After this, there are $k$ lines describing the potential pairs. Each line has two integers $a$ and $b$: boy $a$ and girl $b$ are willing to dance together. \\
+
+\textbf{Output} \\[0.1cm]
+
+\noindent First print one integer $r$: the maximum number of dance pairs. After this, print $r$ lines describing the pairs. You can print any valid solution.
+\end{IOFrame}
+
+\begin{lstlisting}[
+    style=cpp,
+    caption={Main method for solving CSES 1696 School Dancing using MaxFlow template.},
+    label=lst:max-flow_school-dance
+]
+int main()
+{
+    fastIO();
+
+    int n, m, k, a, b;
+    ll maxPairs;
+    vii pairs;
+
+    cin >> n >> m >> k;
+
+    Dinic flow(n+m+2,0,n+m+1);
+
+    fori(boy,0,n+1)
+        flow.addEdge(0,boy,1);
+
+    fori(girl,n+1,n+m+1)
+        flow.addEdge(girl,n+m+1,1);
+
+    fori(i,0,k)
+    {
+        cin >> a >> b;
+        flow.addEdge(a,n+b,1);
+    }
+
+    maxPairs = flow.maxFlow();
+    pairs = flow.maximumMatching();
+
+    cout << maxPairs << endl;
+    fori(i,0,sz(pairs))
+        cout << pairs[i].fi << " " << (pairs[i].se - n) << endl;;
+
+    return 0;
+}
+\end{lstlisting}
+
+\subsubsection{*Ford-Fulkerson Algorithm}
+
+\subsubsection{*Goldber-Tarjan Algorithm}
+
+\section{Trees}
+
+\subsection{Counting Childrens}
+
+\lstinputlisting[
+  style=cpp,
+  caption={Algorithm that counts how many childrens does every node have, from 2..n in a rooted tree (root = 1).},
+  label=lst:counting-childrens
+]{code/trees/counting-childrens.cpp}
+
+\subsection{*Tree Diameter}
+
+\subsection{*Centroid Decomposition}
+
+\subsection{*Euler Tour}
+
+\subsection{*Lowest Common Ancestor (LCA)}
+
+\subsection{*Heavy-Light Decomposition (HLD)}
+
+\section{Strings}
+
+\subsection{*Knuth-Morris-Pratt Algorithm}
+
+\subsection{*Suffix Array}
+
+\subsection{*Rolling Hashing}
+
+\subsection{*Z Function}
+
+\subsection{*Aho-Corasick Algorithm}
+
+\section{Dynamic Programming}
+
+\subsection{*Coins}
+
+\subsection{*Longest Increasing Subsequence (LIS)}
+
+\subsection{*Edit Distance}
+
+\subsection{*Knapsack}
+
+\subsection{*SoS DP}
+
+\subsection{*Digit DP}
+
+\subsection{*Bitmask DP}
+
+\section{Mathematics}
+
+\subsection{Number Theory}
+
+\subsubsection{Greatest Common Divisor (GCD)}
+
+\lstinputlisting[
+  style=cpp,
+  caption={Implementation of handmade GCD, because using \texttt{gcd()} runs slow with long long, also \texttt{\_\_gcd()}.},
+  label=lst:gcd
+]{code/maths/gcd.cpp}
+
+\subsubsection{Gauss Sum}
+
+The sum of the first $n$ natural numbers in $O(1)$.
+
+\begin{align}
+    S &= \frac{n \, (n+1)}{2} \\[0.3cm]
+    n &= \sqrt{2S+\frac{1}{4}} \, - \, \frac{1}{2}
+\end{align}
+
+\begin{lstlisting}[
+    style=cpp,
+    caption={Implementation of the Gauss Sum.},
+    label=lst:gauss-sum
+]
+int S = (1LL * n * (1LL * n + 1LL))/2;
+int n = (int)( sqrt( 2 * S + 0.25 ) - 0.5 )
+\end{lstlisting}
+
+\subsubsection{*Modular Theory}
+
+\subsubsection{*Modulo Inverse}
+
+\subsubsection{*Fermat's Little Theorem}
+
+\subsubsection{*Chinese Remainder Theorem}
+
+\subsubsection{Binpow}
+
+\lstinputlisting[
+  style=cpp,
+  caption={Applying binary exponentiation to a problem requiring $a^b \, mod(10^9+7)$ in $O(log_2(b))$.},
+  label=lst:binpow
+]{code/maths/binpow.cpp}
+
+\subsubsection{Matrix Exponentiation (Linear Recurrency)}
+
+\lstinputlisting[
+  style=cpp,
+  caption={Template to pow a matrix of size $n$ to a certain exponent with logarithmic time (using binpow), and multiply it to another matrix, with modulo operation, as well as how to use it. Full implementation for calculating \texttt{n-th} Fibonacci term with linear recurrency.},
+  label=lst:matrix-exponentiation
+]{code/maths/matrix-exponentiation.cpp}
+
+\subsubsection{Prime checking}
+
+\lstinputlisting[
+  style=cpp,
+  caption={Returns if $n$ is a prime number in $O(\sqrt{n})$. Avoids overflow $\forall \; n \leq 10^6$ ($\approx INT\_MAX$).},
+  label=lst:prime-checking
+]{code/maths/prime-checking.cpp}
+
+\subsubsection{Prime factorization}
+
+\lstinputlisting[
+  style=cpp,
+  caption={Returns prime factorization of the number $n$ using \textit{trial division}, simplest way. Runs in $O(\sqrt{n})$. e.g. for 12 the result is 2x2x3.},
+  label=lst:prime-factorization
+]{code/maths/prime-factorization.cpp}
+
+\subsubsection{Sieve of Eratosthenes}
+
+\lstinputlisting[
+  style=cpp,
+  caption={Calculates every prime number up to $n$ with sieve of eratosthenes in a boolean 1-indexed vector. Runs in $O(n \; log \; log \; n)$.},
+  label=lst:sieve-of-eratosthenes
+]{code/maths/sieve-of-eratosthenes.cpp}
+
+\subsubsection{Sum of Divisors}
+
+\lstinputlisting[
+  style=cpp,
+  caption={Calculates the sum of all divisors of number $n$. e.g. $sum\_of\_divisors(12)=18$. Runs in $O(\sqrt{n})$.},
+  label=lst:sum-of-divisors
+]{code/maths/sum-of-divisors.cpp}
+
+\lstinputlisting[
+  style=cpp,
+  caption={Calculates the sum of all divisors of all numbers from $1$ to $n$. Runs in $O(\,n\,log\,(n))$.},
+  label=lst:sum-of-divisors-sieve
+]{code/maths/sum-of-divisors-sieve.cpp}
+
+\subsection{Combinatorics}
+
+\subsubsection{Binomial Coefficients}
+
+\lstinputlisting[
+  style=cpp,
+  caption={Template for calculating binomial coefficients \texorpdfstring{$\binom{n}{k} = \frac{n!}{k! \, (n-k)!}$}{n choose k}. Precalculate \textit{fact} and \textit{inv} runs in $O(MAXN \cdot log_2(MOD))$ ($log_2(MOD) \approx 30$). So, in general case when $NMAX = 10^6$ and $MOD = 10^9+7$ can be generalizad to $O(n \cdot log(n)), \; n \leq 10^6$.},
+  label=lst:binomial-coefficients
+]{code/maths/binomial-coefficients.cpp}
+
+\subsubsection{Common combinatorics formulas}
+
+\begin{align}
+    &\displaystyle \binom{n}{2} = \frac{n \, (n-1)}{2} \\
+    &\displaystyle \sum_{k=0}^{n} \binom{n}{k} = 2^n \\
+    &\displaystyle \sum_{k=0}^n \binom{n}{k} \binom{n}{n-k} = \binom{2n}{n} \\
+    &\displaystyle \sum_{k=0}^n k \binom{n}{k} = n2^{n-1} \\
+    &\displaystyle \sum_{k=0}^\infty \binom{2k}{k} \binom{2n-2k}{n-k} = 4^n \\
+\end{align}
+
+\subsection{*Stars and Bars}
+
+\subsection{Probability}
+
+\subsection{Computational Geometry}
+
+\subsubsection{*Cross Product}
+
+\subsubsection{*Convex Hull}
+
+\subsection{*Fast Fourier Transform (FFT)}
+
+\section{Appendix}
+
+\subsection{What to do against WA?}
+
+\begin{enumerate}
+    \item Have you done the correct complexity analysis?
+    \item Have you understood well the statement?
+    \item Have you corroborated yet the trivial test cases?
+    \item Have you checked all the corner cases?
+    \item Have you proposed a lot of non-trivial test cases?
+    \item Isn't there any posisbilitie of overflow? (Multiplying two \texttt{int} needs to be fitted into a \texttt{long long})
+    \item Have you done a desktop test?
+    \item Have you red all the variables? (\texttt{tc} variable on \texttt{main})
+    \item Every part of your code works as it's meant to? 
+\end{enumerate}
+
+\subsection{Primitive sizes}
+
+\begin{center}
+    \begin{adjustbox}{max width=\columnwidth}
+    \renewcommand{\arraystretch}{1.3}
+    \begin{tabular}{c|c|c|c}
+        \textbf{Data type} & \textbf{[B]} & \textbf{Minimun value it takes} & \textbf{Maximum value it takes} \\ \hline
+        bool & 1 & 0 & 1 \\ \hline
+        signed char & 1 & 0 & 255 \\
+        unsigned char & 1 & -128 & 127 \\ \hline
+        signed int & 4 & -2,147,483,648 $\approx -2 \times 10^9$ & 2,147,483,647 $\approx 2 \times 10^9$ \\
+        unsigned int & 4 & 0 & 4,294,967,295 $\approx 4 \times 10^9$ \\ \hline
+        signed short & 2 & -32,768 & 32,767 \\
+        unsigned short & 2 & 0 & 65,535 \\ \hline
+        signed long long int & 8 & -9,223,372,036,854,775,808 $\approx -9 \times 10^{18}$ & 9,223,372,036,854,775,807 $\approx 9 \times 10^{18}$ \\
+        unsigned long long int & 8 & 0 & 18,446,744,073,709,551,615 $\approx 18 \times 10^{18}$ \\ \hline
+        float & 4 & $1.1 \times 10^{-38}$ & $3.4 \times 10^{38}$ \\
+        double & 8 & $2.2 \times 10^{-308}$ & $1.7 \times 10^{308}$ \\
+        long double & 12 & $3.3 \times 10^{-4932}$ & $1.1 \times 10^{4932}$ \\
+    \end{tabular}
+    \end{adjustbox}
+    \captionsetup{hypcap=false}
+    \captionof{table}{Capacity of primitive data types in C++.}
+    \captionsetup{hypcap=true}
+\end{center}
+
+\newpage
+\subsection{*ASCII table}
+
+\subsection{*Numbers bit representation}
+
+\subsection{How a \texttt{vector<vector<pair<int,int>>>} looks like}
+
+\begin{figure}[H]
+    \centerline{\includegraphics[width=0.8\columnwidth]{media/vvii_repre.png}}
+    \caption{Visual representation of a vector of vector of pairs.}
+    \label{fig:vvii_repre}
+\end{figure}
+
+\subsection{How all neighbours of a grid looks like}
+
+\begin{figure}[H]
+    \centerline{\includegraphics[width=\columnwidth]{media/grid-neighbors.jpg}}
+    \caption{Visual representation of how all adjacent cells in a grid looks like.}
+    \label{fig:grid-neighbors}
+\end{figure}
+
+\end{document}

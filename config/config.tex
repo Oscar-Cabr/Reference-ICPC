@@ -1,0 +1,76 @@
+\usepackage[hidelinks]{hyperref}   % Permite poner hipervínculos
+\usepackage{url}    % Formatea texto de url correctamente
+\usepackage{comment}    % Comentar bloques de líneas mediante begin-end
+\usepackage{graphicx}
+\usepackage[utf8]{inputenc}
+\usepackage{csquotes}       % Paquete para comillas tipográficas
+\usepackage{float}
+\usepackage{tcolorbox}
+\usepackage{amsmath}
+\usepackage{geometry}
+\usepackage{adjustbox}  % Para utilizar adjustbox en tablas y evitar overflow por datos
+\usepackage{multicol}
+\usepackage{caption}
+\usepackage{lastpage}
+\usepackage{fancyhdr}
+\usepackage[x11names,svgnames,dvipsnames]{xcolor}
+\geometry{
+    a4paper,
+    top = 2cm,
+    left = 2cm,
+    right = 2cm,
+    bottom = 2cm
+}
+
+% -------- Header & Footer --------
+\pagestyle{fancy}
+\fancyhead[LO]{\textbf{$>$:) ICPC Reference}}
+\fancyhead[C]{\leftmark\ -\ \rightmark}
+\fancyhead[RO]{Page \thepage\ of \pageref{LastPage}}
+\renewcommand{\headrulewidth}{0.4pt}
+\fancyfoot{}
+% -------------------------------------------
+
+% -------- Frames (Cuadros flotantes) --------
+\usepackage[framemethod=TikZ]{mdframed}
+\usepackage{changepage}
+%\usepackage[default]{sourcesanspro} % Fuente sans-serif
+\usepackage{lmodern}
+\newmdenv[
+    backgroundcolor=gray!10,
+    linecolor=black,
+    roundcorner=10pt,
+    linewidth=1pt,
+    topline=true,
+    bottomline=true,
+    leftline=true,
+    rightline=true,
+    innertopmargin=10pt,
+    innerbottommargin=10pt,
+    innerleftmargin=15pt,
+    innerrightmargin=15pt,
+    skipabove=10pt,
+    skipbelow=10pt,
+]{IOFrame}
+
+\mdfdefinestyle{terminal}{
+    backgroundcolor=bashBackgroundColor,
+    linecolor=white,
+    roundcorner=5pt,
+    skipabove=10pt,
+    skipbelow=10pt,
+    innerleftmargin=10pt,
+    innerrightmargin=10pt,
+    innertopmargin=5pt,
+    innerbottommargin=5pt
+}
+% -------------------------------------------
+
+% --------------- Definiendo colores ---------------
+\definecolor{titleColor}{RGB}{0, 51, 153}
+\definecolor{subtitleColor}{RGB}{0, 102, 204}
+\definecolor{authorColor}{RGB}{204, 51, 0}
+\definecolor{schoolColor}{RGB}{255, 0, 0}
+\definecolor{bashLetterColor}{RGB}{180, 192, 201}
+\definecolor{bashBackgroundColor}{RGB}{15, 15, 15}
+% --------------------------------------------------

@@ -1,0 +1,133 @@
+\usepackage{listings}   %   Incluir código fuente formateado
+\usepackage{tcolorbox}  %   Redondear esquinas de un listing
+\usepackage[dvipsnames, svgnames, x11names]{xcolor} % Utilizar colores en código
+%   Para consultar la tabla de colores en el siguiente link: https://mirror.math.princeton.edu/pub/CTAN/macros/latex/contrib/xcolor/xcolor.pdf
+
+%   Para consultar la documentación sobre listings: https://us.mirrors.cicku.me/ctan/macros/latex/contrib/listings/listings.pdf
+
+%   Renombrando cosas
+%\renewcommand{\lstlistingname}{Listado}
+
+\lstdefinestyle{cpp}{
+%   Searching for files
+%   Space and placement
+%   The printed range
+%   Languages and styles
+    language = [ANSI]C++,
+%   Figure out the appearance
+    basicstyle = \ttfamily\upshape\normalsize,
+    %identifierstyle = \color{Red3},
+    commentstyle = \color{Seashell4},    %Azure3
+    stringstyle = \color{DarkGoldenrod3},
+    keywordstyle = \color{RoyalBlue4},
+%   Getting all characters right
+    inputencoding = utf8,
+    extendedchars = true,
+    tabsize = 2,
+    showtabs = false,    
+    showspaces = false,                
+    showstringspaces = false,
+%   Line numbers
+    numbers = left,                    
+    numberstyle = \ttfamily\upshape\color{lightgray},
+    numbersep = 8pt,  
+    numberblanklines = true,
+%   Captions
+    captionpos = b,     
+%   Margins and line shape
+    linewidth = \dimexpr\columnwidth-8pt\relax,  % Resta 15pt de cada lado (total 30pt)
+    xleftmargin = 20pt,
+%    xleftmargin=0.15pt,  % Margen izquierdo del 10% del ancho de la página
+%    xrightmargin=0.1\textwidth,
+    breaklines = true,
+    breakatwhitespace = false,
+%   Frames
+    frame = single,
+    frameround = tttt,
+    framesep = 3pt,
+    framerule = 0.4pt,
+    %backgroundcolor = \color{GhostWhite},
+    rulecolor = \color{black},
+%   Indexing
+%   Column alignment
+    keepspaces = true,                 
+    lineskip = 0.5em,
+    keywords = {include, iostream, int, main, using, namespace, std, cout, cin, return, if, typedef, long, vector, pair, const, INT_MAX, LLONG_MAX, void, int32_t, double, while, ifndef, endif, stdin, stdout, freopen, sync_with_stdio, tie, ios, string, float, struct, ios_base, endl, DBL_EPSILON, first, second, push_back, class, public, assign, else, max, min, for, private, size, bool, false, auto, break, priority_queue, greater, push, pop, top, continue, empty, true, queue, front, iterator, begin, end, rbegin, rend, e9, stack, e17, resize, fill, emplace_back, sqrt, LL, ll, functiontemplate, typename, T, assert, operator, this, function, reverse,nullptr, abs},
+    literate=%
+        {á}{{\'a}}1
+        {é}{{\'e}}1
+        {í}{{\'i}}1
+        {ó}{{\'o}}1
+        {ú}{{\'u}}1
+        {ñ}{{\~n}}1
+        {Á}{{\'A}}1
+        {É}{{\'E}}1
+        {Í}{{\'I}}1
+        {Ó}{{\'O}}1
+        {Ú}{{\'U}}1
+        {Ñ}{{\~N}}1
+        {à}{{\`a}}1
+        {è}{{\`e}}1
+        {ì}{{\`i}}1
+        {ò}{{\`o}}1
+        {ù}{{\`u}}1
+        {À}{{\`A}}1
+        {È}{{\`E}}1
+        {Ì}{{\`I}}1
+        {Ò}{{\`O}}1
+        {Ù}{{\`U}}1
+        {¿}{{\textquestiondown}}1
+%        {?}{{\textquestionmark}}1
+        {¡}{{\textexclamdown}}1
+}
+
+\lstdefinestyle{java}{
+    language = Java,
+    backgroundcolor=\color{Snow1},   %Seashell
+    basicstyle = \ttfamily\footnotesize,
+    keywordstyle=\itshape\color{RoyalBlue4},
+    commentstyle=\itshape\color{Seashell4},    %Azure3
+    stringstyle=\itshape\color{DarkGoldenrod3},
+    identifierstyle=\itshape\color{Red3},
+    numberstyle=\scriptsize\color{lightgray},
+    xleftmargin=0em,
+    xrightmargin=0em,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,    
+    lineskip=0.5em,
+    tabsize=2,
+    keywords={public, static, void, main, class, String, System, out, println, int, Integer, new, if, else, switch, break, case, char, default, for, do, while, length, toString, put, ArrayList, add, size, get, Hashtable, Enumeration, keys, hasMoreElements, nextElement, Calendar, getInstance, MONTH, APRIL, DAY_OF_MONTH, MARCH, MAY, OCTOBER, NOVEMBER, set, boolean, float, true, false, return, f, Random, nextBoolean, Math, sqrt, pow, @Override, private, this},
+    literate=%
+        {á}{{\'a}}1
+        {é}{{\'e}}1
+        {í}{{\'i}}1
+        {ó}{{\'o}}1
+        {ú}{{\'u}}1
+        {ñ}{{\~n}}1
+        {Á}{{\'A}}1
+        {É}{{\'E}}1
+        {Í}{{\'I}}1
+        {Ó}{{\'O}}1
+        {Ú}{{\'U}}1
+        {Ñ}{{\~N}}1
+        {à}{{\`a}}1
+        {è}{{\`e}}1
+        {ì}{{\`i}}1
+        {ò}{{\`o}}1
+        {ù}{{\`u}}1
+        {À}{{\`A}}1
+        {È}{{\`E}}1
+        {Ì}{{\`I}}1
+        {Ò}{{\`O}}1
+        {Ù}{{\`U}}1
+        {¿}{{\textquestiondown}}1
+        {?}{{\textquestionmark}}1
+        {¡}{{\textexclamdown}}1
+}
