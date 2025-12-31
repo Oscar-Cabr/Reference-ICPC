@@ -2,9 +2,7 @@ typedef long long ll;
 typedef vector<ll> vll;
 typedef vector<int> vi;
 const int INF = INT_MAX;
- 
-class Segment_tree
-{
+class Segment_tree {
    public: vll t;
    Segment_tree( int n = 1e5+10 ) {
       t.assign(n*4,INF);
