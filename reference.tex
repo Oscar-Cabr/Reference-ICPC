@@ -255,9 +255,21 @@ int myCeil(long long a, long long b) {
 
 \subsubsection{*Lazy Propagation}
 
-\subsection{*Ordered Set}
+\subsection{Ordered Set}
 
-\subsubsection{*Multi-Ordered Set}
+\lstinputlisting[
+  style=cpp,
+  caption={Ordered set necessary includes in header, declaration of the object, and usage of its new methods.},
+  label=lst:ordered-set
+]{code/queries/ordered-set.cpp}
+
+\subsubsection{Multi-Ordered Set}
+
+\lstinputlisting[
+  style=cpp,
+  caption={Declaration of multi-oset structure.},
+  label=lst:multi-ordered-set
+]{code/queries/multi-ordered-set.cpp}
 
 \subsection{*Treap}
 
@@ -586,7 +598,13 @@ int main()
 
 \section{Strings}
 
-\subsection{*Knuth-Morris-Pratt Algorithm}
+\subsection{Knuth-Morris-Pratt Algorithm (KMP)}
+
+\lstinputlisting[
+  style=cpp,
+  caption={KMP algorithm for counting how many times a pattern appear into a string. Runs in $O(n+m)$.},
+  label=lst:kmp
+]{code/strings/kmp.cpp}
 
 \subsection{*Suffix Array}
 
