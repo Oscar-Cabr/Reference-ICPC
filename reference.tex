@@ -373,7 +373,68 @@ int myCeil(long long a, long long b) {
 
 \subsection{*Strongly Connected Components (SCC)}
 
-\subsection{*2-SAT}
+\subsection{2-SAT}
+\lstinputlisting[
+    style=cpp,
+    caption={2-SAT implementation from \texttt{cp-algorithms.com}. Each component added is a expression of the form $a \vee b$, which is equivalent to $\neg a \Rightarrow b \wedge \neg b \Rightarrow a$ (if one of the variables is false, then the other one must be true). A directed graph is constructed based on these implication: For each $x$, there's two vertices $v_x$ and $v_{\neg x}$. If there is an edge $a \Rightarrow b$, then there also is an edge $\neg b \Rightarrow \neg a$. For any $x$, if $x$ is reachable from $\neg x$ and $\neg x$ is reachable from $x$, the problem has no solution. This means, each variable must be in a different SCC than their negative. This is verified by the method \texttt{solve\_2SAT()}, which returns a boolean: \texttt{True} if it has a solution and \texttt{False} if it doesn't.},
+    label=lst:2-sat
+]{code/graphs/2-sat.cpp}
+
+\paragraph{Giant Pizza}
+
+How does a particular 2-SAT problem look like?
+Following is the statement for the problem CSES 1684 (Giant Pizza):
+
+\begin{IOFrame}
+\sffamily\raggedright
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.4em}
+Uolevi's family is going to order a large pizza and eat it together. A total of n family members will join the order, and there are m possible toppings. The pizza may have any number of toppings.
+Each family member gives two wishes concerning the toppings of the pizza. The wishes are of the form "topping $x$ is good/bad". Your task is to choose the toppings so that at least one wish from everybody becomes true (a good topping is included in the pizza or a bad topping is not included).
+
+\textbf{Input} \\[0.1cm]
+
+\noindent The first input line has two integers $n$ and $m$: the number of family members and toppings. The toppings are numbered $1,2,\dots,m$.
+    After this, there are $n$ lines describing the wishes. Each line has two wishes of the form $"+ x"$ (topping $x$ is good) or $"- x"$ (topping $x$ is bad).\\
+
+\vspace{5px}
+\textbf{Output} \\[0.1cm]
+
+\noindent Print a line with $m$ symbols: for each topping "+" if it is included and "-" if it is not included. You can print any valid solution.
+If there are no valid solutions, print "IMPOSSIBLE".
+\end{IOFrame}
+
+\begin{lstlisting}[
+    style=cpp,
+    caption={Main method for solving CSES 1684 Giant Pizza using 2-SAT template.},
+    label=lst:2-sat-giant-pizza
+]
+int main(){
+    fastIO();
+    int n = nxt(), m = nxt();
+    TwoSatSolver TwoSat(m);
+
+    fori(i, 0, n){
+        char type1, type2;
+        int top1, top2;
+        cin >> type1 >> top1 >> type2 >> top2;
+
+        top1--; top2--;
+        TwoSat.add_disjunction(top1, type1 == '-', top2, type2 == '-');
+    }
+
+    if(TwoSat.solve_2SAT()){
+        fori(i, 0, m){
+            if(TwoSat.assignment[i])
+                cout << "+ ";
+            else 
+                cout << "- "; 
+        }
+    }
+    else cout << "IMPOSSIBLE";
+    return 0;
+}
+\end{lstlisting}
 
 \subsection{*Bridges and point articulation}
 
