@@ -106,11 +106,15 @@ pypy3 solucion.py < input.txt > output.txt
 
 \subsection{*Strings methods}
 
-\subsection{*Pragmas}
+\subsection{Pragmas}
+
+\lstinputlisting[
+  style=cpp,
+  caption={Common pragmas.},
+  label=lst:pragmas  
+]{code/misc/pragmas.cpp}
 
 \subsection{Bit Manipulation Cheat Sheet}
-
-\begin{multicols}{2}
 
 \textbf{Bitwise operators:}
 
@@ -143,8 +147,6 @@ pypy3 solucion.py < input.txt > output.txt
     \item Set difference: \texttt{A \& $\sim$B}
     \item Toggle subset: \texttt{A \^ B}
 \end{itemize}
-
-\end{multicols}
 
 Gray code: \texttt{G = B $\oplus$ (B >> 1)}
 
