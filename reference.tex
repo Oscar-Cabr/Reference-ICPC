@@ -121,24 +121,24 @@ pypy3 solucion.py < input.txt > output.txt
 \begin{itemize}
     \item \texttt{\&} (AND): Sets each bit to 1 if both bits are 1.
     \item \texttt{|} (OR): Sets each bit to 1 if al teast one bit is 1.
-    \item \texttt{\^} (XOR): Sets each bit to 1 if bits are different.
+  \item $\wedge$ (XOR): Sets each bit to 1 if bits are different.
     \item \texttt{$\sim$} (NOT): Inverts all bits.
     \item \texttt{<<} (Left shift): Shifts bits left, fills with 0.
     \item \texttt{>>} (Right shift): Shifts bits right.
 \end{itemize}
 
-\textbf{Basic Bit Tasks:}
+\noindent\textbf{Basic Bit Tasks:}
 
 \begin{itemize}
     \item Get bit: \texttt{(n \& (1 << i)) != 0}
     \item Set bit: \texttt{n | (1 << i)}
     \item Clear bit: \texttt{n \& $\sim$(1 << i)}
-    \item Toggle bit: \texttt{n \^ (1 << i)}
+    \item Toggle bit: \texttt{n $\wedge$ (1 << i)}
     \item Clear LSB: \texttt{n \& (n - 1)}
     \item Get LSB: \texttt{n \& -n}
 \end{itemize}
 
-\textbf{Set Operations:}
+\noindent\textbf{Set Operations:}
 
 \begin{itemize}
     \item Subset check: \texttt{(A \& B) == B}
@@ -148,7 +148,35 @@ pypy3 solucion.py < input.txt > output.txt
     \item Toggle subset: \texttt{A \^ B}
 \end{itemize}
 
-Gray code: \texttt{G = B $\oplus$ (B >> 1)}
+\noindent\textbf{Equations:}\par\vspace{0.5\baselineskip}
+
+Properties of bitwise:
+\begin{itemize}
+  \item \texttt{a | b = a } $\oplus$ \texttt{ b + a \& b}
+  \item \texttt{a } $\oplus$ \texttt{ (a \& b) = (a | b) } $\oplus$ \texttt{ b} 
+  \item \texttt{b } $\oplus$ \texttt{ (a \& b) = (a | b) } $\oplus$ \texttt{ a} 
+  \item \texttt{(a \& b) } $\oplus$ \texttt{ (a | b) = a } $\oplus$ \texttt{b}
+\end{itemize}
+
+In addition and substraction:
+\begin{itemize}
+  \item \texttt{a + b = (a | b) + (a \& b)}
+  \item \texttt{a + b = a } $\oplus$ \texttt{b + 2 (a \& b)}
+  \item \texttt{a - b = (a } $\oplus$ \texttt{(a \& b)) - ((a | b) } $\oplus$ \texttt{a)} )
+  \item \texttt{a - b = ((a | b)} $\oplus$ \texttt{b) ) - ( (a | b)} $\oplus$ \texttt{a} )
+  \item \texttt{a - b = (a} $\oplus$ \texttt{(a \& b)) - (b} $\oplus$ \texttt{(a \& b) )}
+  \item \texttt{a - b = ((a | b)} $\oplus$ \texttt{b) ) - (b} $\oplus$ \texttt{(a \& b) )}
+\end{itemize}
+
+\noindent\textbf{Gray code:} \texttt{G = B } $\oplus$ \texttt{ (B >> 1)}\par\vspace{\baselineskip}
+
+\noindent\textbf{C++ built in functions:}
+
+\begin{itemize}
+  \item \texttt{\_\_builtin\_popcount(x)} - Count the number of set bits in x.
+  \item \texttt{\_\_builatin\_clz(x)} - Count the number of leading zeros in x.
+  \item  \texttt{\_\_builtint\_ctz(x)} - Count the number of trailing zeros in x.
+\end{itemize}
 
 \subsection{Comparing Floats}
 
