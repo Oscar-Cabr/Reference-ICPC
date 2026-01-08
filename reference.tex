@@ -1,6 +1,6 @@
 \documentclass[a4paper,landscape]{article}
-\include{config/config}
-\include{config/listing}
+\input{config/config}
+\input{config/listing}
 \title{Reference\_ICPC}
 \author{Racso Fractal}
 \date{January 2026}
@@ -390,14 +390,20 @@ int myCeil(long long a, long long b) {
   caption={Recursive toposort implementation for unweighted DAG through vvi with DFS with inverted postorder. Runs in $O(|V| \times |E|)$.},
   label=lst:toposort-dfs
 ]{code/graphs/toposort-dfs.cpp}
-
+d
 \lstinputlisting[
   style=cpp,
   caption={Kahn's Algorithm for Topological Sorting using BFS and indegree vertex analysis (nodes in a cycle will never have indegree zero). Works over unweighted directed graphs containing cycles through vvi. Runs in $O(|V| \times |E|)$.},
   label=lst:toposort-kahn
 ]{code/graphs/toposort-kahn.cpp}
 
-\subsection{*Disjoint Set Union (DSU)}
+\subsection{Disjoint Set Union (DSU)}
+
+\lstinputlisting[
+  style=cpp,
+  caption={Template and usage of DSU with path compression. Complexity of $O(m \; \alpha (n))$ for a sequence of $m$ operations over $n$ elements. Where $\alpha$ denotes Ackerman function, where $\alpha (n) \leq 4, \forall n \leq 10^{18}$. Practically $O(1)$.},
+  label=lst:dsu
+]{code/graphs/dsu.cpp}
 
 \subsection{*Condensation Graph}
 
