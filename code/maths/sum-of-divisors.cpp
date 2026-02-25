@@ -1,6 +1,6 @@
 ll sum_of_divisors(ll n) {
   ll sum = 1;
-  for (long long i = 2; i * i <= n; i++) {
+  for (ll i = 2; i * i <= n; i++) {
     if(n % i == 0) {
       int e = 0;
       do {
