@@ -42,12 +42,17 @@
 
 \vfill
 
-{\Huge \textbf{$>:)$}}\\[0.2cm]
+{\Huge \textbf{FractalTeam}}\\[0.2cm]
 RacsoFractal, zum, edwardsal17
 
 \vfill
 
 \end{titlepage}
+
+\newpage
+\thispagestyle{empty}
+\null
+\newpage
 
 \restoregeometry
 
@@ -396,7 +401,7 @@ int myCeil(long long a, long long b) {
   caption={Recursive toposort implementation for unweighted DAG through vvi with DFS with inverted postorder. Runs in $O(|V| \times |E|)$.},
   label=lst:toposort-dfs
 ]{code/graphs/toposort-dfs.cpp}
-d
+
 \lstinputlisting[
   style=cpp,
   caption={Kahn's Algorithm for Topological Sorting using BFS and indegree vertex analysis (nodes in a cycle will never have indegree zero). Works over unweighted directed graphs containing cycles through vvi. Runs in $O(|V| \times |E|)$.},
@@ -769,11 +774,21 @@ int S = (1LL * n * (1LL * n + 1LL))/2;
 int n = (int)( sqrt( 2 * S + 0.25 ) - 0.5 )
 \end{lstlisting}
 
-\subsubsection{*Modular Theory}
+\subsubsection{Fermat's Little Theorem}
 
-\subsubsection{*Modulo Inverse}
+\begin{align*}
+  a^{-1} &\equiv 1 \pmod{p} \quad \forall p \; \text{primo}, \; (a,p) = 1 \\
+a^{p-2} \cdot a &= 1 \\
+\Rightarrow a^{-1} &\equiv a^{p-2} \pmod{p}
+\end{align*}
 
-\subsubsection{*Fermat's Little Theorem}
+\subsubsection{Modulo Inverse}
+
+\lstinputlisting[
+  style=cpp,
+  caption={Computes $a^{-1} (m)$ in $O(log(MOD))$.},
+  label=lst:modulo-inverse
+]{code/maths/modulo-inverse.cpp}
 
 \subsubsection{*Chinese Remainder Theorem}
 
@@ -784,14 +799,6 @@ int n = (int)( sqrt( 2 * S + 0.25 ) - 0.5 )
   caption={Applying binary exponentiation to a problem requiring $a^b \, mod(10^9+7)$ in $O(log_2(b))$.},
   label=lst:binpow
 ]{code/maths/binpow.cpp}
-
-\subsubsection{Matrix Exponentiation (Linear Recurrency)}
-
-\lstinputlisting[
-  style=cpp,
-  caption={Template to pow a matrix of size $n$ to a certain exponent with logarithmic time (using binpow), and multiply it to another matrix, with modulo operation, as well as how to use it. Full implementation for calculating \texttt{n-th} Fibonacci term with linear recurrency.},
-  label=lst:matrix-exponentiation
-]{code/maths/matrix-exponentiation.cpp}
 
 \subsubsection{Prime checking}
 
@@ -848,7 +855,7 @@ int n = (int)( sqrt( 2 * S + 0.25 ) - 0.5 )
     &\displaystyle \sum_{k=0}^{n} \binom{n}{k} = 2^n \\
     &\displaystyle \sum_{k=0}^n \binom{n}{k} \binom{n}{n-k} = \binom{2n}{n} \\
     &\displaystyle \sum_{k=0}^n k \binom{n}{k} = n2^{n-1} \\
-    &\displaystyle \sum_{k=0}^\infty \binom{2k}{k} \binom{2n-2k}{n-k} = 4^n \\
+    &\displaystyle \sum_{k=0}^\infty \binom{2k}{k} \binom{2n-2k}{n-k} = 4^n
 \end{align}
 
 \subsubsection{Stars and Bars}
@@ -869,7 +876,25 @@ The number of ways to accomodate a binary string made of $n$ and $k$ elements.
 
 \subsubsection{*Convex Hull}
 
-\subsection{*Fast Fourier Transform (FFT)}
+\subsection{Linear Algebra}
+
+\subsubsection{XOR Basis}
+
+\lstinputlisting[
+  style=cpp,
+  caption={Template for implementing XOR Basis and its operations: insert, max number doable, can do a certain number with that basis, merge two basis and find the k-th number doable.},
+  label=lst:xor-basis
+]{code/maths/xor-basis.cpp}
+
+\subsubsection{Matrix Exponentiation (Linear Recurrency)}
+
+\lstinputlisting[
+  style=cpp,
+  caption={Template to pow a matrix of size $n$ to a certain exponent with logarithmic time (using binpow), and multiply it to another matrix, with modulo operation, as well as how to use it. Full implementation for calculating \texttt{n-th} Fibonacci term with linear recurrency.},
+  label=lst:matrix-exponentiation
+]{code/maths/matrix-exponentiation.cpp}
+
+\subsubsection{*Fast Fourier Transform (FFT)}
 
 \section{Appendix}
 
