@@ -1,28 +1,14 @@
-int V, E;
-cin >> V >> E;
-vvi edges(E,vi(3,0));
-
-for(int i = 1; i <= E; i++)
-  cin >> edges[i][0] >> edges[i][1] >> edges[i][2];
-
-function<vi(int)> bellman_ford = [&](int src) -> vi
-{
-  vi dist(V,INF);
-  dist[src] = 0;
-  for(int i = 0; i < V; i++)
-  {
-     for( vi edge : edges )
-     {
-        int u = edge[0];
-        int v = edge[1];
-        int w = edge[2];
-        if( dist[u] != INF and dist[u] + w < dist[v] )
-        {
-           if( i == V-1 )
-              return = {-1};
-           dist[v] = dist[u] + w;
-        }
-     }
-  }
-  return dist;
+vvll dist(n+1,vll(n+1,INF));
+for(int i = 1; i <= n; i++)
+  dist[i][i] = 0;
+for(int i = 0; i < m; i++) {
+  dist[u][v] = w;
+  dist[v][u] = w;
+}
+function<void()> floyd_warshall = [&]() -> void {
+  for(int k = 1; k <= n; k++)
+    for(int i = 1; i <= n; i++)
+      for(int j = 1; j <= n; j++)
+        if( dist[i][k] < INF and dist[k][j] < INF )
+          dist[i][j] = min( dist[i][j], dist[i][k] + dist[k][j] );
 };

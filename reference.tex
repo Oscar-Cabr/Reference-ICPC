@@ -374,7 +374,13 @@ int myCeil(long long a, long long b) {
   label=lst:dijkstra-lambda
 ]{code/graphs/dijkstra-lambda.cpp}
 
-\subsubsection{*Floyd-Warshall's Algorithm}
+\subsubsection{Floyd-Warshall's Algorithm}
+
+\lstinputlisting[
+  style=cpp,
+  caption={Implementation of Floyd Warshall's Algorithm for finding APSP (\textit{All Pairs Shortest Path}). Runs in $O(|V|^3)$, work with negative weights and cand detect negative cycles (if \texttt{dist[i][i] < 0}).},
+  label=lst:floyd-warshall
+]{code/graphs/floyd-warshall.cpp}
 
 \subsubsection{Bellman–Ford Algorithm}
 
