@@ -264,9 +264,36 @@ int myCeil(long long a, long long b) {
 
 \subsection{*Sqrt Decomposition}
 
-\subsection{*Fenwick Tree}
+\subsection{Fenwick Tree (BIT)}
 
-\subsection{*Fenwick Tree 2D}
+Let $f$ be some group operation (a binary \textbf{associative} function over a set with an \textbf{identity} and \textbf{inverse} elements) and $A$ be an array of integers of length $N$. Denote $f$'s infix function as $*$; that is, $f(x,y) = x * y$ for arbitrary integers $x, y$.
+
+The Fenwick tree is a data structure which:
+
+\begin{itemize}
+  \item Calculates tha value of function $f$ in the given range $[l,r]$ (i.e. $A_l * A_{l+1} * \cdots * A_r$) in $O(log_N)$ time.
+  \item Updates the value of an element of $A$ in $O(log_N)$ time.
+\end{itemize}
+
+\textbf{Operations supported by BIT:} sum, XOR, counting frequencies, order statistics.
+
+\textbf{Operations \underline{not} supported by BIT:} minimum, maximum, gcd, and / or.
+
+BIT basically obtains ranges by substracting prefixes: $range(l,r) = prefix(r) * prefix(l-1)$.
+
+\lstinputlisting[
+  style=cpp,
+  caption={BIT implementation for sum queries. Builds in $O(n log n)$, queries in $O(logn)$.},
+  label=lst:fenwick-tree
+]{code/queries/fenwick-tree.cpp}
+
+\subsubsection{2D Fenwick Tree (BIT)}
+
+\lstinputlisting[
+  style=cpp,
+  caption={2D BIT implementation for sum queries. Builds in $O(n log n)$, queries in $O(logn)$.},
+  label=lst:fenwick-tree-2d
+]{code/queries/fenwick-tree-2d.cpp}
 
 \subsection{Segment Tree}
 
