@@ -413,7 +413,13 @@ BIT basically obtains ranges by substracting prefixes: $range(l,r) = prefix(r) *
 
 \subsection{Minimum Spanning Tree (MST)}
 
-\subsubsection{*Prim's Algorithm}
+\subsubsection{Prim's Algorithm}
+
+\lstinputlisting[
+  style=cpp,
+  caption={Implementation of Prim's Algorithm that returns the total weight of the MST in a adjacency list. Runs in $O(|V|^2)$.},
+  label=lst:prim
+]{code/graphs/prim.cpp}
 
 \subsubsection{*Kruskal's Algorithm}
 
