@@ -449,11 +449,20 @@ BIT basically obtains ranges by substracting prefixes: $range(l,r) = prefix(r) *
   label=lst:dsu
 ]{code/graphs/dsu.cpp}
 
-\subsection{*Condensation Graph}
+\subsection{Strongly Connected Components (SCC)}
 
-\subsection{*Strongly Connected Components (SCC)}
+\subsubsection{Kosaraju's Algorithm}
+
+\lstinputlisting[
+  style=cpp,
+  caption={Template for implementing Kosaraju's and obtaining the condensed graph, and list of components for 1-indexed adjacency list. Runs in $O(|V| + |E|)$.},
+  label=lst:kosaraju
+]{code/graphs/kosaraju.cpp}
+
+\subsubsection{*Tarjan's Algorithm}
 
 \subsection{2-SAT}
+
 \lstinputlisting[
     style=cpp,
     caption={2-SAT implementation from \texttt{cp-algorithms.com}. Each component added is a expression of the form $a \vee b$, which is equivalent to $\neg a \Rightarrow b \wedge \neg b \Rightarrow a$ (if one of the variables is false, then the other one must be true). A directed graph is constructed based on these implication: For each $x$, there's two vertices $v_x$ and $v_{\neg x}$. If there is an edge $a \Rightarrow b$, then there also is an edge $\neg b \Rightarrow \neg a$. For any $x$, if $x$ is reachable from $\neg x$ and $\neg x$ is reachable from $x$, the problem has no solution. This means, each variable must be in a different SCC than their negative. This is verified by the method \texttt{solve\_2SAT()}, which returns a boolean: \texttt{True} if it has a solution and \texttt{False} if it doesn't.},
