@@ -423,7 +423,13 @@ BIT basically obtains ranges by substracting prefixes: $range(l,r) = prefix(r) *
 
 \subsubsection{*Kruskal's Algorithm}
 
-\subsection{*Bipartite Checking}
+\subsection{Bipartite Checking}
+
+\lstinputlisting[
+  style=cpp,
+  caption={Checking bipartiteness with BFS, count how many vertices were colored as 1 and 2, or set them to zero if the component is not bipartite.},
+  label=lst:bipartite
+]{code/graphs/bipartite.cpp}
 
 \subsection{*Negative Cycles}
 
