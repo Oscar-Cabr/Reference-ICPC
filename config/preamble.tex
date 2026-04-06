@@ -1,0 +1,41 @@
+\usepackage[hidelinks]{hyperref}   % Permite poner hipervínculos
+\usepackage{url}    % Formatea texto de url correctamente
+\usepackage{comment}    % Comentar bloques de líneas mediante begin-end
+\usepackage{graphicx}
+\usepackage[utf8]{inputenc}
+\usepackage{csquotes}       % Paquete para comillas tipográficas
+\usepackage{float}
+\usepackage{tcolorbox}
+\usepackage{amsmath}
+\usepackage{geometry}
+\usepackage{adjustbox}  % Para utilizar adjustbox en tablas y evitar overflow por datos
+\usepackage{multicol}
+\usepackage{caption}
+\usepackage{emptypage}
+\usepackage[x11names,svgnames,dvipsnames]{xcolor}
+\usepackage{listings}   %   Incluir código fuente formateado
+\usepackage[framemethod=TikZ]{mdframed}
+\usepackage{changepage}
+%\usepackage[default]{sourcesanspro} % Fuente sans-serif
+\usepackage{lmodern}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+
+\input{config/colors}
+\input{config/header}
+\input{config/listing}
+\input{config/frames}
+
+\date{January 2026}
+\lstset{ style = cpp }
+\pagenumbering{arabic}
+\geometry{
+    a4paper,
+    top = 2cm,
+    left = 2cm,
+    right = 2cm,
+    bottom = 2cm
+}
+
+\title{Reference\_ICPC}
+\author{Racso Fractal}
