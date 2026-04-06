@@ -11,8 +11,6 @@
 \usepackage{adjustbox}  % Para utilizar adjustbox en tablas y evitar overflow por datos
 \usepackage{multicol}
 \usepackage{caption}
-\usepackage{lastpage}
-\usepackage{fancyhdr}
 \usepackage{emptypage}
 \usepackage[x11names,svgnames,dvipsnames]{xcolor}
 \geometry{
@@ -22,15 +20,6 @@
     right = 2cm,
     bottom = 2cm
 }
-
-% -------- Header & Footer --------
-\pagestyle{fancy}
-\fancyhead[LO]{\textbf{FractalTeam ICPC Reference}}
-\fancyhead[C]{\leftmark\ -\ \rightmark}
-\fancyhead[RO]{Page \thepage\ of \pageref{LastPage}}
-\renewcommand{\headrulewidth}{0.4pt}
-\fancyfoot{}
-% -------------------------------------------
 
 % -------- Frames (Cuadros flotantes) --------
 \usepackage[framemethod=TikZ]{mdframed}
