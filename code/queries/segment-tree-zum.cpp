@@ -13,7 +13,6 @@ struct Node{
         res.zum = a.zum + b.zum;
         return res;
     }
-
 };
 
 struct SegmentTree{
