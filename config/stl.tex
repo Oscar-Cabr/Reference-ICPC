@@ -12,11 +12,9 @@
         bottom=2mm,
         before skip=10pt,
         after skip=10pt,
-        % --- CORRECTED BREAK SETTINGS ---
         bottomrule at break=0pt,
         toprule at break=0pt,
         pad at break=0mm,
-        % ------------------------------
         attach boxed title to top left={
             xshift=4mm,
             yshift*=-\tcboxedtitleheight/2,
@@ -50,14 +48,12 @@
 }
 \NewDocumentCommand{\overload}{v}{%
     \noindent{\normalsize\ttfamily #1}\par
-    % Discourage a column break immediately after the signature
     \nopagebreak
 }
 \NewDocumentEnvironment{STLParameters}{}{%
     \par\vspace{2pt}
     \begin{list}{}{%
         \small
-        % \color removed from here to prevent vertical mode color bleeding
         \setlength{\leftmargin}{3.5em}
         \setlength{\itemindent}{-3.5em}
         \setlength{\parsep}{2pt}
@@ -70,7 +66,6 @@
     \par\vspace{2pt}
 }
 \NewDocumentCommand{\parameter}{m +m}{%
-    % \leavevmode forces horizontal mode before applying color
     \item \leavevmode\color{syntaxGray}%
     \makebox[3.2em][l]{\texttt{\detokenize{#1}}}#2
 }
