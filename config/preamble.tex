@@ -5,10 +5,10 @@
 \usepackage[utf8]{inputenc}
 \usepackage{csquotes}       % Paquete para comillas tipográficas
 \usepackage{float}
-\usepackage{tcolorbox}
+\usepackage[most]{tcolorbox}
 \usepackage{amsmath}
 \usepackage{geometry}
-\usepackage{adjustbox}  % Para utilizar adjustbox en tablas y evitar overflow por datos
+\usepackage{adjustbox}  % Para utilizar adjustbox en tablas y evitar overflow por datos. Para mdframed rounded.
 \usepackage{multicol}
 \usepackage{caption}
 \usepackage{emptypage}
@@ -16,15 +16,18 @@
 \usepackage{listings}   %   Incluir código fuente formateado
 \usepackage[framemethod=TikZ]{mdframed}
 \usepackage{changepage}
-%\usepackage[default]{sourcesanspro} % Fuente sans-serif
 \usepackage{lmodern}
 \usepackage{fancyhdr}
 \usepackage{lastpage}
+\usepackage{xparse}
+\usepackage{enumitem}
+\usepackage{needspace}
 
 \input{config/colors}
 \input{config/header}
 \input{config/listing}
 \input{config/frames}
+\input{config/stl}
 
 \date{January 2026}
 \lstset{ style = cpp }

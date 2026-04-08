@@ -38,7 +38,7 @@
 \vfill
 
 {\Huge \textbf{FractalTeam}}\\[0.2cm]
-RacsoFractal, zum, edwardsal17
+RacsoFractal, zum, Warddd
 
 \vfill
 
@@ -102,9 +102,31 @@ pypy3 solucion.py < input.txt > output.txt
   label=lst:custom-sorting  
 ]{code/misc/custom-sorting.cpp}
 
-\subsection{*STL DS Usage}
+\subsection{STL DS Usage}
 
-\subsection{*Strings methods}
+\begin{STLClass}{std::string}
+   \begin{STLMethod}{find}
+      \overload|size_t find (const string& str, size_t pos = 0) const;|
+      \overload|size_t find (const char* s, size_t pos = 0) const;|
+      \overload|size_t find (const char* s, size_t pos, size_t n) const;|
+      \overload|size_t find (char c, size_t pos = 0) const;|
+      \begin{STLParameters}
+         \parameter{str}{Another string with the subject to search for.}
+         \parameter{pos}{position of the first character in the string to be considered in the search.
+If this is greater than the string length, the function never finds matches.
+note: the first character is denoted by a value of 0.}
+         \parameter{s}{Pointer to an array of characters.
+If argument n is specified, the sequence to match are the first n characters in the array.
+Otherwise, a null-terminated sequence is expected.}
+         \parameter{n}{Length of sequence of characters to match.}
+         \parameter{c}{Individual character to be searched for.}
+      \end{STLParameters}
+      \return{The position of the first character of the first match.
+      If no matches were found, the function returns string::npos.}
+      \complexity{Unspecified, but generally up to linear in length()-pos times the length of the sequence to match (worst case).}
+      \note{This is a note.}
+   \end{STLMethod}
+\end{STLClass}
 
 \subsection{Pragmas}
 
@@ -114,6 +136,7 @@ pypy3 solucion.py < input.txt > output.txt
   label=lst:pragmas  
 ]{code/misc/pragmas.cpp}
 
+\newpage
 \subsection{Bit Manipulation Cheat Sheet}
 
 \textbf{Bitwise operators:}
@@ -957,6 +980,7 @@ The number of ways to accomodate a binary string made of $n$ and $k$ elements.
 
 \subsubsection{*Fast Fourier Transform (FFT)}
 
+\newpage
 \section{Appendix}
 
 \subsection{What to do against WA?}

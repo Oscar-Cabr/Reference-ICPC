@@ -1,0 +1,85 @@
+\NewDocumentEnvironment{STLClass}{m}{%
+    \begin{tcolorbox}[
+        enhanced jigsaw,
+        breakable,
+        colback=white,
+        colframe=black,
+        boxrule=0.8pt,
+        arc=6pt,
+        left=2mm,
+        right=2mm,
+        top=2mm,
+        bottom=2mm,
+        before skip=10pt,
+        after skip=10pt,
+        % --- CORRECTED BREAK SETTINGS ---
+        bottomrule at break=0pt,
+        toprule at break=0pt,
+        pad at break=0mm,
+        % ------------------------------
+        attach boxed title to top left={
+            xshift=4mm,
+            yshift*=-\tcboxedtitleheight/2,
+        },
+        boxed title style={
+            colback=white,
+            colframe=black,
+            boxrule=0.8pt,
+            arc=6pt,
+            left=8pt,
+            right=8pt,
+            top=3pt,
+            bottom=3pt,
+        },
+        fonttitle=\bfseries\Large\ttfamily\color{black},
+        title={#1},
+    ]
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{2pt}
+}{%
+    \end{tcolorbox}
+}
+\NewDocumentEnvironment{STLMethod}{m}{%
+    \par\noindent
+    {\Large\ttfamily\bfseries #1\par}
+    \nointerlineskip
+    \vspace{2pt}
+    \noindent\rule{\linewidth}{0.4pt}
+}{%
+    \par
+}
+\NewDocumentCommand{\overload}{v}{%
+    \noindent{\normalsize\ttfamily #1}\par
+    % Discourage a column break immediately after the signature
+    \nopagebreak
+}
+\NewDocumentEnvironment{STLParameters}{}{%
+    \par\vspace{2pt}
+    \begin{list}{}{%
+        \small
+        % \color removed from here to prevent vertical mode color bleeding
+        \setlength{\leftmargin}{3.5em}
+        \setlength{\itemindent}{-3.5em}
+        \setlength{\parsep}{2pt}
+        \setlength{\itemsep}{0pt}
+        \setlength{\topsep}{0pt}
+        \setlength{\partopsep}{0pt}
+    }
+}{%
+    \end{list}
+    \par\vspace{2pt}
+}
+\NewDocumentCommand{\parameter}{m +m}{%
+    % \leavevmode forces horizontal mode before applying color
+    \item \leavevmode\color{syntaxGray}%
+    \makebox[3.2em][l]{\texttt{\detokenize{#1}}}#2
+}
+\NewDocumentCommand{\return}{+m}{%
+    \par\smallskip\noindent{\normalsize\textbf{Return — } #1}
+}
+\NewDocumentCommand{\complexity}{+m}{%
+    \par\noindent{\normalsize\textbf{Complexity — } #1}
+}
+\NewDocumentCommand{\note}{+m}{%
+    \par\noindent{\normalsize\textbf{Note — } #1}
+}
