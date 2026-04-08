@@ -305,7 +305,7 @@ BIT basically obtains ranges by substracting prefixes: $range(l,r) = prefix(r) *
 
 \lstinputlisting[
   style=cpp,
-  caption={Segment Tree for Dynamic Range \textbf{Sum} Queries. Zum's Implementation.},
+  caption={Segment Tree for Static Range \textbf{Sum} Queries. Zum's Implementation.},
   label=lst:segment-tree-zum
 ]{code/queries/segment-tree-zum.cpp}
 
@@ -313,7 +313,13 @@ BIT basically obtains ranges by substracting prefixes: $range(l,r) = prefix(r) *
 
 \subsubsection{*Persistent Segment Tree}
 
-\subsubsection{*Lazy Propagation}
+\subsubsection{Lazy Propagation}
+
+\lstinputlisting[
+  style=cpp,
+  caption={Lazy Propagation Segment Tree for Dynamic Range \textbf{Sum} Queries. Zum's Implementation for scalability.},
+  label=lst:lazy-segment-tree
+]{code/queries/lazy-segment-tree.cpp}
 
 \subsection{*Merge Sort Tree}
 
