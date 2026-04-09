@@ -1,5 +1,4 @@
 \documentclass[a4paper,landscape]{article}
-
 \input{config/preamble}
 
 \begin{document}
@@ -953,6 +952,79 @@ The number of ways to accomodate a binary string made of $n$ and $k$ elements.
 \end{align*}
 
 \subsection{Probability}
+
+\subsubsection{Laplace's Rule}
+
+$$
+  P(A) = \frac{Favorable cases}{Total possible cases}
+$$
+Discrete probability of an event $A$ where all cases are equally probable.
+
+\subsubsection{Probability Distributions}
+
+\paragraph{Geometric Distribution}
+
+\begin{align*}
+  &P(X = k) = (1 - p)^{k-1}p\\
+  &p = \text{Probability of a single success.}
+\end{align*}
+\textit{"La probabilidad de que $X$ sea exactamente igual a $k$ es 1 - la probabilidad de un éxito a la potencia de la cantidad de fracasos por la probabilidad del éxito".}\\
+Models the probability of having exactly $k-1$ failures before a success in the $k$'th try.
+
+\paragraph{Binomial Distribution}
+
+\begin{align*}
+  &P(X = k) = \binom{n}{k}p^k(1-p)^{n-k}\\
+  &p = \text{Probability of a single success.}\\
+  &k = \text{Number of total successes we are looking for.}\\
+  &n = \text{Total number of tries.}
+\end{align*}
+\textit{"La probabilidad de que ocurran $k$ éxitos en $n$ intentos es de la binomial de número de intentos sobre la cantidad de éxitos buscados, por la probabilidad de un éxito a la potencia de los éxitos buscados por 1 - la probabilidad de los éxitos buscados a la potencia de la diferencia entre la cantidad de intentos y de éxitos".}\\
+Models the probability of having exactly $k$ successes in $n$ total tries (no matter the order). We're looking for $k$ successes and $n-k$ failures.
+
+\subsubsection{Expected Value}
+Expected Value is the average of all possible results.
+Use when asked for "the expected number of tries".\\
+\textbf{Discrete Random Variable X:}
+$$
+  E[X] = \sum_{i=1}^n x_i P(x_i)
+$$
+\textbf{Continuous Random Variable X:}
+$$
+  E[X] = \int_{-\infty}^{\infty} x f(x)dx
+$$
+
+\noindent
+\begin{minipage}{\columnwidth}
+\textbf{Properties of Expected Value}
+\begin{center}
+\scriptsize 
+\renewcommand{\arraystretch}{1} 
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{|l|l|}
+\hline
+\textbf{Property} & \textbf{Formula} \\
+\hline
+Linearity (always) & $E[X + Y] = E[X] + E[Y]$ \\
+\hline
+Constant & $E[c] = c$  \\
+\hline
+Multiplication & $E[cX] = cE[X]$  \\
+\hline
+Product (if indep.) & $E[XY] = E[X]E[Y]$  \\
+\hline
+Non-Negativity & $X \ge 0 \implies E[X] \ge 0$ \\
+\hline
+Monotonicity & $X \le Y \implies E[X] \le E[Y]$ \\
+\hline
+Total Exp. \tiny{(partitions)} & $E[X] = \sum_{y} E[X|Y=y]P(Y=y)$ \\
+\hline
+Variance & $Var(X) = E[X^2] - (E[X])^2$ \\
+\hline
+\end{tabular}%
+}
+\end{center}
+\end{minipage}
 
 \subsection{Computational Geometry}
 
