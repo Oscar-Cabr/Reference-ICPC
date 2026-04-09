@@ -1,5 +1,3 @@
-#include<bits/stdc++.h>
-typedef long long ll;
 struct Node{
     ll zum;
     Node() : zum(0) {}
