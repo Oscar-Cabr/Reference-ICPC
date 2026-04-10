@@ -962,7 +962,7 @@ The number of ways to accomodate a binary string made of $n$ and $k$ elements.
 \subsubsection{Laplace's Rule}
 
 $$
-  P(A) = \frac{Favorable cases}{Total possible cases}
+  P(A) = \frac{\text{Favorable cases}}{\text{Total possible cases}}
 $$
 Discrete probability of an event $A$ where all cases are equally probable.
 
@@ -1034,7 +1034,21 @@ Variance & $Var(X) = E[X^2] - (E[X])^2$ \\
 
 \subsection{Computational Geometry}
 
-\subsubsection{*Cross Product}
+\subsubsection{Cross Product}
+
+\lstinputlisting[
+  style=cpp,
+  caption={Template for the \textbf{Point} structure (or 2D vector) that has its own substraction operator and its cross product},
+  label=lst:cross-product
+]{code/maths/cross-product.cpp}
+
+\subsubsection{Polygon Area}
+
+\lstinputlisting[
+  style=cpp,
+  caption={Obtains the area of a polygon formed by a set of Points (2D) stored in a \texttt{std::vector}. It returns a double, since it has a division by 2, but it can return a \texttt{ll} for double the area. Requires the \texttt{Point} struct seen in the previous listing.},
+  label=lst:polygon-area
+]{code/maths/polygon-area.cpp}
 
 \subsubsection{*Convex Hull}
 
