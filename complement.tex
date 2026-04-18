@@ -1,0 +1,19 @@
+
+\documentclass[a4paper,landscape]{article}
+
+\input{config/preamble}
+
+\begin{document}
+
+\begin{multicols}{2}
+
+\section{Euler Tour}
+
+\lstinputlisting[
+  style=cpp,
+  caption={Euler Tour implementation, runs in $O(|V|+|E|)$. Works with an 1-indexed logic, but the time mapping is 0-indexed. Brings necessary logic to work with BIT and ST templates.},
+]{code/trees/euler-tour.cpp}
+
+\end{multicols}
+
+\end{document}
