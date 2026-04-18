@@ -316,13 +316,13 @@ BIT basically obtains ranges by substracting prefixes: $range(l,r) = prefix(r) *
 
 \lstinputlisting[
   style=cpp,
-  caption={Segment Tree for Dynamic Range \textbf{Minimum} Queries. Racso's Implementation.},
+  caption={Segment Tree for dynamic range \textbf{minimum} queries. Racso's implementation. The input vector and the update/query is 0-indexed, the tree nodes are 1-indexed.},
   label=lst:segment-tree-racso
 ]{code/queries/segment-tree-racso.cpp}
 
 \lstinputlisting[
   style=cpp,
-  caption={Segment Tree for Static Range \textbf{Sum} Queries. Zum's Implementation.},
+  caption={Segment Tree for static range \textbf{sum} queries. Zum's implementation.},
   label=lst:segment-tree-zum
 ]{code/queries/segment-tree-zum.cpp}
 
@@ -787,7 +787,13 @@ int main()
 
 \subsection{*Centroid Decomposition}
 
-\subsection{*Euler Tour}
+\subsection{Euler Tour}
+
+\lstinputlisting[
+  style=cpp,
+  caption={Euler Tour implementation, runs in $O(|V|+|E|)$. Works with an 1-indexed logic, but the time mapping is 0-indexed. Brings necessary logic to work with BIT and ST templates.},
+  label=lst:euler-tour
+]{code/trees/euler-tour.cpp}
 
 \subsection{*Lowest Common Ancestor (LCA)}
 
