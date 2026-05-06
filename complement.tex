@@ -19,10 +19,11 @@
   caption={Coordinate Compression implementation for a vector of integers. Replaces elements in the original vector to newly assigned minimal numbers. Runs in $O(nlog(n))$.},
 ]{code/misc/coordinate_compression.cpp}
 
-\section{Mo's Algorithm}
+\section{Sqrt Decomposition}
+\subsection{Mo's Algorithm}
 \lstinputlisting[
   style=cpp,
-  caption={Implementation of Mo's Algorithm for efficient query sorting. Efficient in static range queries problems, since it's easier to implement than a segment tree. Runs in $O((n+q)\sqrt{n}\cdot F)$, where $F$ stands for the complexity of an update (usually $O(1)$ or $O(log(n))$},
+  caption={Implementation of Mo's Algorithm for offline query sorting. Efficient in static range queries problems, since it's easier to implement than a segment tree. Runs in $O((n+q)\sqrt{n}\cdot F)$, where $F$ stands for the time complexity of an update (usually $O(1)$ or $O(log(n))$},
 ]{code/queries/mo_algorithm.cpp}
 
 \end{multicols}
