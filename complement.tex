@@ -8,11 +8,22 @@
 \begin{multicols}{2}
 
 \section{Euler Tour}
-
 \lstinputlisting[
   style=cpp,
   caption={Euler Tour implementation, runs in $O(|V|+|E|)$. Works with an 1-indexed logic, but the time mapping is 0-indexed. Brings necessary logic to work with BIT and ST templates.},
 ]{code/trees/euler-tour.cpp}
+
+\section{Coordinate Compression}
+\lstinputlisting[
+  style=cpp,
+  caption={Coordinate Compression implementation for a vector of integers. Replaces elements in the original vector to newly assigned minimal numbers. Runs in $O(nlog(n))$.},
+]{code/misc/coordinate_compression.cpp}
+
+\section{Mo's Algorithm}
+\lstinputlisting[
+  style=cpp,
+  caption={Implementation of Mo's Algorithm for efficient query sorting. Efficient in static range queries problems, since it's easier to implement than a segment tree. Runs in $O((n+q)\sqrt{n}\cdot F)$, where $F$ stands for the complexity of an update (usually $O(1)$ or $O(log(n))$},
+]{code/queries/mo_algorithm.cpp}
 
 \end{multicols}
 
