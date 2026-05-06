@@ -279,7 +279,12 @@ int myCeil(long long a, long long b) {
   label=lst:prefix-sum-2d 
 ]{code/queries/prefix-sum-2d.cpp}
 
-\subsection{*Sqrt Decomposition}
+\subsection{Sqrt Decomposition}
+\subsubsection{Mo's Algorithm}
+\lstinputlisting[
+  style=cpp,
+  caption={Implementation of Mo's Algorithm for offline query sorting. Efficient in static range queries problems, since it's easier to implement than a segment tree. Runs in $O((n+q)\sqrt{n}\cdot F)$, where $F$ stands for the time complexity of an update (usually $O(1)$ or $O(log(n))$},
+]{code/queries/mo_algorithm.cpp}
 
 \subsection{Fenwick Tree (BIT)}
 
