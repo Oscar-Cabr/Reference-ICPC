@@ -628,24 +628,16 @@ After this, there are $m$ lines describing the connections. Each line has three 
     caption={Main method for solving CSES 1697 Download Speed using MaxFlow template.},
     label=lst:max-flow_dowload-speed
 ]
-int main()
-{
+int main() {
     fastIO();
-
     int n, m, u, v, w;
-
     cin >> n >> m;
-
     Dinic flow(n+1,1,n); // size n+1 to fix 0-indexed indexes, 1 is the source (server), 'n' is the sink (Kotivalo)
-
-    fori(i,0,m)
-    {
+    fori(i,0,m) {
         cin >> u >> v >> w;
         flow.addEdge(u,v,w);
     }
-
     cout << flow.maxFlow() << endl;
-
     return 0;
 }
 \end{lstlisting}
@@ -678,31 +670,22 @@ After this, there are $m$ lines that describing the streets. Each line has two i
     caption={Main method for solving CSES 1695 Police Chase using MaxFlow template.},
     label=lst:max-flow_police-chase
 ]
-int main()
-{
+int main() {
     fastIO();
-
     int n, m, u, v;
     vii minCut;
-
     cin >> n >> m;
-
     Dinic flow(n+1,1,n); // size n+1 to fix 0-indexed indexes, 1 is the source (bank), 'n' is the sink (harbor)
-
-    fori(i,0,m)
-    {
+    fori(i,0,m) {
         cin >> u >> v;
         flow.addEdge(u,v,1);
         flow.addEdge(v,u,1);
     }
-
     flow.maxFlow();
     minCut = flow.minCut();
-    
     cout << (sz(minCut)/2) << endl;
     for(int i = 0; i < sz(minCut); i += 2)
         cout << minCut[i].fi << " " << minCut[i].se << endl;
-
     return 0;
 }
 \end{lstlisting}
@@ -735,37 +718,26 @@ After this, there are $k$ lines describing the potential pairs. Each line has tw
     caption={Main method for solving CSES 1696 School Dancing using MaxFlow template.},
     label=lst:max-flow_school-dance
 ]
-int main()
-{
+int main() {
     fastIO();
-
     int n, m, k, a, b;
     ll maxPairs;
     vii pairs;
-
     cin >> n >> m >> k;
-
     Dinic flow(n+m+2,0,n+m+1);
-
     fori(boy,0,n+1)
         flow.addEdge(0,boy,1);
-
     fori(girl,n+1,n+m+1)
         flow.addEdge(girl,n+m+1,1);
-
-    fori(i,0,k)
-    {
+    fori(i,0,k) {
         cin >> a >> b;
         flow.addEdge(a,n+b,1);
     }
-
     maxPairs = flow.maxFlow();
     pairs = flow.maximumMatching();
-
     cout << maxPairs << endl;
     fori(i,0,sz(pairs))
         cout << pairs[i].fi << " " << (pairs[i].se - n) << endl;;
-
     return 0;
 }
 \end{lstlisting}
@@ -785,7 +757,6 @@ int main()
 ]{code/trees/counting-childrens.cpp}
 
 \subsection{Tree Diameter}
-
 \lstinputlisting[
   style=cpp,
   caption={Calculates the length of Tree Diameter using a DP approach. Runs in $O(|V|)$.},
