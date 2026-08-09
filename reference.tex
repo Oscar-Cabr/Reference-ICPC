@@ -142,7 +142,7 @@ Otherwise, a null-terminated sequence is expected.}
 
 \begin{itemize}
     \item \texttt{\&} (AND): Sets each bit to 1 if both bits are 1.
-    \item \texttt{|} (OR): Sets each bit to 1 if al teast one bit is 1.
+    \item \texttt{|} (OR): Sets each bit to 1 if at least one bit is 1.
   \item $\wedge$ (XOR): Sets each bit to 1 if bits are different.
     \item \texttt{$\sim$} (NOT): Inverts all bits.
     \item \texttt{<<} (Left shift): Shifts bits left, fills with 0.
@@ -180,7 +180,7 @@ Properties of bitwise:
   \item \texttt{(a \& b) } $\oplus$ \texttt{ (a | b) = a } $\oplus$ \texttt{b}
 \end{itemize}
 
-In addition and substraction:
+In addition and subtraction:
 \begin{itemize}
   \item \texttt{a + b = (a | b) + (a \& b)}
   \item \texttt{a + b = a } $\oplus$ \texttt{b + 2 (a \& b)}
@@ -196,8 +196,8 @@ In addition and substraction:
 
 \begin{itemize}
   \item \texttt{\_\_builtin\_popcount(x)} - Count the number of set bits in x.
-  \item \texttt{\_\_builatin\_clz(x)} - Count the number of leading zeros in x.
-  \item  \texttt{\_\_builtint\_ctz(x)} - Count the number of trailing zeros in x.
+  \item \texttt{\_\_builtin\_clz(x)} - Count the number of leading zeros in x.
+  \item  \texttt{\_\_builtin\_ctz(x)} - Count the number of trailing zeros in x.
 \end{itemize}
 
 \subsection{Comparing Floats}
@@ -208,7 +208,7 @@ In addition and substraction:
     label=lst:comparing-floats
 ]
 long double a, b, EPS = 1e-9;
-if( abs(a - b) < EPs ) {
+if( abs(a - b) < EPS ) {
     // 'a' equals 'b'
 }
 \end{lstlisting}
@@ -427,13 +427,13 @@ BIT basically obtains ranges by substracting prefixes: $range(l,r) = prefix(r) *
 
 \lstinputlisting[
   style=cpp,
-  caption={Iterative implementation of Dijkstra's Algorithm for shortest path. Returns a vector with the shortest path to every other vertex in the graph. $O(|E|\times log_2(|V|))$. doesn't work with negative weights.},
+  caption={Iterative implementation of Dijkstra's Algorithm for shortest path. Returns a vector with the shortest distance to every other vertex in the graph. $O(|E|\times log_2(|V|))$. Doesn't work with negative weights.},
   label=lst:dijkstra
 ]{code/graphs/dijkstra.cpp}
 
 \lstinputlisting[
   style=cpp,
-  caption={Iterative implementation of Dijkstra's Algorithm as a Lambda Function for shortest path over an adjacency list. Returns a vector with the shortest path to every other vertex in the graph. $O(|E|\times log_2(|V|))$. Doesn't work with negative weights.},
+  caption={Iterative implementation of Dijkstra's Algorithm as a Lambda Function for shortest path over an adjacency list. Returns a vector with the shortest distance to every other vertex in the graph. $O(|E|\times log_2(|V|))$. Doesn't work with negative weights.},
   label=lst:dijkstra-lambda
 ]{code/graphs/dijkstra-lambda.cpp}
 
@@ -479,13 +479,13 @@ BIT basically obtains ranges by substracting prefixes: $range(l,r) = prefix(r) *
 
 \lstinputlisting[
   style=cpp,
-  caption={Recursive toposort implementation for unweighted DAG through vvi with DFS with inverted postorder. Runs in $O(|V| \times |E|)$.},
+  caption={Recursive toposort implementation for unweighted DAG through vvi with DFS with inverted postorder. Runs in $O(|V| + |E|)$.},
   label=lst:toposort-dfs
 ]{code/graphs/toposort-dfs.cpp}
 
 \lstinputlisting[
   style=cpp,
-  caption={Kahn's Algorithm for Topological Sorting using BFS and indegree vertex analysis (nodes in a cycle will never have indegree zero). Works over unweighted directed graphs containing cycles through vvi. Runs in $O(|V| \times |E|)$.},
+  caption={Kahn's Algorithm for Topological Sorting using BFS and indegree vertex analysis (nodes in a cycle will never have indegree zero). Works over unweighted directed graphs containing cycles through vvi. Runs in $O(|V| + |E|)$.},
   label=lst:toposort-kahn
 ]{code/graphs/toposort-kahn.cpp}
 
@@ -1028,7 +1028,7 @@ Variance & $Var(X) = E[X^2] - (E[X])^2$ \\
 
 \lstinputlisting[
   style=cpp,
-  caption={Template for the \textbf{Point} structure (or 2D vector) that has its own substraction operator and its cross product},
+  caption={Template for the \textbf{Point} structure (or 2D vector) that has its own subtraction operator and its cross product},
   label=lst:cross-product
 ]{code/maths/cross-product.cpp}
 
@@ -1085,10 +1085,10 @@ Variance & $Var(X) = E[X^2] - (E[X])^2$ \\
     \begin{adjustbox}{max width=\columnwidth}
     \renewcommand{\arraystretch}{1.3}
     \begin{tabular}{c|c|c|c}
-        \textbf{Data type} & \textbf{[B]} & \textbf{Minimun value it takes} & \textbf{Maximum value it takes} \\ \hline
+        \textbf{Data type} & \textbf{[B]} & \textbf{Minimum value it takes} & \textbf{Maximum value it takes} \\ \hline
         bool & 1 & 0 & 1 \\ \hline
-        signed char & 1 & 0 & 255 \\
-        unsigned char & 1 & -128 & 127 \\ \hline
+        signed char & 1 & -128 & 127 \\
+        unsigned char & 1 & 0 & 255 \\ \hline
         signed int & 4 & -2,147,483,648 $\approx -2 \times 10^9$ & 2,147,483,647 $\approx 2 \times 10^9$ \\
         unsigned int & 4 & 0 & 4,294,967,295 $\approx 4 \times 10^9$ \\ \hline
         signed short & 2 & -32,768 & 32,767 \\

@@ -15,8 +15,10 @@ vi compute_LPS(string s) {
 }
 // Get number of occurrences of a pattern p in a string s
 int kmp(string s, string p) {
+  size_t n = s.size(), m = p.size();
+  if( m == 0 ) return 0; // empty pattern: convention, 0 occurrences
   vi lps = compute_LPS(p);
-  size_t n = s.size(), m = p.size(), i = 0, j = 0;
+  size_t i = 0, j = 0;
   int cnt = 0;
   while( i < n ) {
     if( p[j] == s[i] ) {

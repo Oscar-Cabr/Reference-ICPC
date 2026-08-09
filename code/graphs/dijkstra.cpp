@@ -7,7 +7,7 @@ graph.assign(n, vector<ll>() ); // <--- main
 visited.assign(n, false); // <--- main
 
 vector<ll> dijkstra( int n, int source, vector<vector<pll>> &graph ) {
-  vector<ll> dist( n, INFTY );
+  vector<ll> dist( n, INF );
   priority_queue<pll, vector<pll>, greater<pll>> pq;
   dist[ source ] = 0;
   pq.push( {0, source} );

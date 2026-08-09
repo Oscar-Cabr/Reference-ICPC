@@ -23,7 +23,7 @@ typedef unsigned long long ull;
 #define fori(i,a,n) for(int i = a; i < n; i++)
 #define endl '\n'
 const int MOD = 1e9+7;
-const int INFTY = INT_MAX;
+const int INF = INT_MAX;
 const long long LLINF = LLONG_MAX;
 const double EPS = DBL_EPSILON;
 void printVector( auto& v ){ fori(i,0,sz(v)) cout << v[i] << " "; cout << endl; }
