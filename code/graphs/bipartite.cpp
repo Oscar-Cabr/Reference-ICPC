@@ -19,6 +19,6 @@ function<void(int)> bfs = [&](int s) -> void {
     }
   }
   if(!bipartite) {
-    cnt[1] = cnt[2] = false;
+    cnt[1] = cnt[2] = 0;
   }
 };

@@ -7,7 +7,7 @@ function<ll()> prim = [&]() -> ll
   {
     pll p = pq.top();
     pq.pop();
-    int w = p.fi;
+    ll w = p.fi;
     int u = p.se;
     if( visited[u] ) continue;
     res += w;
