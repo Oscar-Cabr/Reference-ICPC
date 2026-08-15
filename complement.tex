@@ -26,7 +26,21 @@
 \subsection{Mo's Algorithm}
 \lstinputlisting[
   style=cpp,
-  caption={Implementation of Mo's Algorithm for offline query sorting. Efficient in static range queries problems, since it's easier to implement than a segment tree. Runs in $O((n+q)\sqrt{n}\cdot F)$, where $F$ stands for the time complexity of an update (usually $O(1)$ or $O(log(n))$},
+  caption={Offline query ordering for Mo's Algorithm. Sorts the queries by block of the left endpoint, alternating the right endpoint order per block (zig-zag) to reduce moves. The sort itself runs in $O(q\,log(q))$; the whole algorithm runs in $O((n+q)\sqrt{n}\cdot F)$, where $F$ is the cost of an update (usually $O(1)$ or $O(log(n))$).},
 ]{code/queries/mo_algorithm.cpp}
+
+\section{Input Parsing}
+
+\lstinputlisting[
+  style=cpp,
+  caption={Parses input line by line. Reads a full line and splits it by spaces into a vector of strings. Complexity: $O(L)$ time and memory, where $L$ is the length of the line.},
+]{code/misc/input-parsing.cpp}
+
+\section{Regex}
+
+\lstinputlisting[
+  style=cpp,
+  caption={Patterns for validating integers, decimals, and subscript/superscript formats, plus the helpers \texttt{findFirst} and \texttt{findAll}. Complexity: $O(n)$ per search for simple patterns ($n$ = length of the string); worst case exponential due to the backtracking engine. Prefer compiling the regex once ($O(p)$, $p$ = pattern length) and reusing it. Requires C++11 or later.},
+]{code/misc/regex.cpp}
 
 \end{document}

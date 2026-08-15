@@ -1,4 +1,4 @@
-double polygon_area(const vector<Point>& p){
+double polygon_area(const vector<pt>& p){
     ll area = 0;
     int n = p.size();
     fori(i,0,n){

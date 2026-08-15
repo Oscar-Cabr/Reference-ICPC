@@ -213,6 +213,22 @@ if( abs(a - b) < EPS ) {
 }
 \end{lstlisting}
 
+\subsection{Input Parsing}
+
+\lstinputlisting[
+  style=cpp,
+  caption={Parses input line by line. Reads a full line and splits it by spaces into a vector of strings. Complexity: $O(L)$ time and memory, where $L$ is the length of the line.},
+  label=lst:input-parsing
+]{code/misc/input-parsing.cpp}
+
+\subsection{Regex}
+
+\lstinputlisting[
+  style=cpp,
+  caption={Patterns for validating integers, decimals, and subscript/superscript formats, plus the helpers \texttt{findFirst} and \texttt{findAll}. Complexity: $O(n)$ per search for simple patterns ($n$ = length of the string); worst case exponential due to the backtracking engine. Prefer compiling the regex once ($O(p)$, $p$ = pattern length) and reusing it. Requires C++11 or later.},
+  label=lst:regex
+]{code/misc/regex.cpp}
+
 \subsection{Ceil}
 
 \[ \Bigl\lceil \frac{a}{b} \Bigr\rceil = \frac{a + b - 1}{b}\]
@@ -291,7 +307,7 @@ int myCeil(long long a, long long b) {
 \subsubsection{Mo's Algorithm}
 \lstinputlisting[
   style=cpp,
-  caption={Implementation of Mo's Algorithm for offline query sorting. Efficient in static range queries problems, since it's easier to implement than a segment tree. Runs in $O((n+q)\sqrt{n}\cdot F)$, where $F$ stands for the time complexity of an update (usually $O(1)$ or $O(log(n))$},
+  caption={Offline query ordering for Mo's Algorithm. Sorts the queries by block of the left endpoint, alternating the right endpoint order per block (zig-zag) to reduce moves. The sort itself runs in $O(q\,log(q))$; the whole algorithm runs in $O((n+q)\sqrt{n}\cdot F)$, where $F$ is the cost of an update (usually $O(1)$ or $O(log(n))$).},
 ]{code/queries/mo_algorithm.cpp}
 
 \subsection{Fenwick Tree (BIT)}
@@ -593,7 +609,7 @@ int main(){
 
 \subsection{MaxFlow}
 
-\subsubsection{Dinic's Algorihtm}
+\subsubsection{Dinic's Algorithm}
 
 \lstinputlisting[
   style=cpp,
@@ -861,16 +877,6 @@ a^{p-2} \cdot a &= 1 \\
 \Rightarrow a^{-1} &\equiv a^{p-2} \pmod{p}
 \end{align*}
 
-\subsubsection{Modulo Inverse}
-
-\lstinputlisting[
-  style=cpp,
-  caption={Computes $a^{-1} (m)$ in $O(log(MOD))$.},
-  label=lst:modulo-inverse
-]{code/maths/modulo-inverse.cpp}
-
-\subsubsection{*Chinese Remainder Theorem}
-
 \subsubsection{Binpow}
 
 \lstinputlisting[
@@ -878,6 +884,16 @@ a^{p-2} \cdot a &= 1 \\
   caption={Applying binary exponentiation to a problem requiring $a^b \, mod(10^9+7)$ in $O(log_2(b))$.},
   label=lst:binpow
 ]{code/maths/binpow.cpp}
+
+\subsubsection{Modulo Inverse}
+
+\lstinputlisting[
+  style=cpp,
+  caption={Computes $a^{-1} (m)$ in $O(log(MOD))$. Requires the binpow implementation from the Binpow section.},
+  label=lst:modulo-inverse
+]{code/maths/modulo-inverse.cpp}
+
+\subsubsection{*Chinese Remainder Theorem}
 
 \subsubsection{Prime checking}
 
@@ -923,7 +939,7 @@ a^{p-2} \cdot a &= 1 \\
 
 \lstinputlisting[
   style=cpp,
-  caption={Template for calculating binomial coefficients \texorpdfstring{$\binom{n}{k} = \frac{n!}{k! \, (n-k)!}$}{n choose k}. Precalculate \textit{fact} and \textit{inv} runs in $O(MAXN \cdot log_2(MOD))$ ($log_2(MOD) \approx 30$). So, in general case when $NMAX = 10^6$ and $MOD = 10^9+7$ can be generalizad to $O(n \cdot log(n)), \; n \leq 10^6$.},
+  caption={Template for calculating binomial coefficients \texorpdfstring{$\binom{n}{k} = \frac{n!}{k! \, (n-k)!}$}{n choose k}. Precalculate \textit{fact} and \textit{inv} runs in $O(MAXN \cdot log_2(MOD))$ ($log_2(MOD) \approx 30$). So, in general case when $NMAX = 10^6$ and $MOD = 10^9+7$ can be generalizad to $O(n \cdot log(n)), \; n \leq 10^6$. Requires the binpow implementation from the Binpow section.},
   label=lst:binomial-coefficients
 ]{code/maths/binomial-coefficients.cpp}
 
@@ -1024,23 +1040,37 @@ Variance & $Var(X) = E[X^2] - (E[X])^2$ \\
 
 \subsection{Computational Geometry}
 
-\subsubsection{Cross Product}
+\subsubsection{Point Struct}
 
 \lstinputlisting[
   style=cpp,
-  caption={Template for the \textbf{Point} structure (or 2D vector) that has its own subtraction operator and its cross product},
-  label=lst:cross-product
-]{code/maths/cross-product.cpp}
+  caption={Template for the \textbf{Point} structure (or 2D vector) with its addition, subtraction, dot product, cross product and squared norm.},
+  label=lst:point-struct
+]{code/maths/geometry/point-struct.cpp}
 
 \subsubsection{Polygon Area}
 
 \lstinputlisting[
   style=cpp,
-  caption={Obtains the area of a polygon formed by a set of Points (2D) stored in a \texttt{std::vector} with a time complexity of \texttt{O(n)}. It returns a double, since it has a division by 2, but it can return a \texttt{ll} for double the area. Requires the \texttt{Point} struct seen in the previous listing.},
+  caption={Obtains the area of a polygon formed by a set of Points (2D) stored in a \texttt{std::vector} with a time complexity of \texttt{O(n)}. It returns a double, since it has a division by 2, but it can return a \texttt{ll} for double the area. Requires the \texttt{pt} struct seen in the previous listing.},
   label=lst:polygon-area
-]{code/maths/polygon-area.cpp}
+]{code/maths/geometry/polygon-area.cpp}
 
-\subsubsection{*Convex Hull}
+\subsubsection{Convex Hull}
+
+\lstinputlisting[
+  style=cpp,
+  caption={Computes the convex hull of a point set with the Monotone Chain (Andrew's algorithm) in \texttt{O(n log n)}. Mutates the input vector and returns the hull in clockwise order; \texttt{include\_collinear} keeps collinear points that lie on hull edges. Requires the \texttt{pt} struct.},
+  label=lst:convex-hull
+]{code/maths/geometry/convex-hull.cpp}
+
+\subsubsection{Convexity Check}
+
+\lstinputlisting[
+  style=cpp,
+  caption={Checks whether a polygon given in clockwise or counter-clockwise order is convex in \texttt{O(n)}. With \texttt{allow\_collinear} it also accepts collinear consecutive vertices (non-strict convexity). Requires the \texttt{pt} struct.},
+  label=lst:is-convex
+]{code/maths/geometry/is-convex.cpp}
 
 \subsection{Linear Algebra}
 

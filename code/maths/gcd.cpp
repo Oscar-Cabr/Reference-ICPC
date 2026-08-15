@@ -1,8 +1,8 @@
-int gcd(int a, int b) {
-  if (a == 0) return b;
-  if (b == 0) return a;
-  if (a == b) return a;
-  if (a > b)
-    return gcd(a - b, b);
-  return gcd(a, b - a);
+ll gcd(ll a, ll b) {
+    while (b != 0) {
+        ll r = a % b;
+        a = b;
+        b = r;
+    }
+    return a;
 }

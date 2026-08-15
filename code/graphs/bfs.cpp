@@ -11,8 +11,8 @@ void bfs( int s ) {
 		int u = q.front();
 		q.pop();
 		for( auto v : graph[ u ] ) {
-			if( ! visited[ u ] ) {
-				visited[ u ] = true;
+			if( ! visited[ v ] ) {
+				visited[ v ] = true;
 				q.push( v );
 				// --- ToDo logic here ---
 			}
