@@ -15,7 +15,7 @@ function<void()> kosaraju = [&]() -> void {
   for(int v = 1; v <= V; v++)
     for(int u : adj[v])
       adj_t[u].push_back(v);
-  for(int i = 1; i < V; i++)
+  for(int i = 1; i <= V; i++)
     if( !visited[i] )
       dfs(i,adj,order);
   visited.assign(V+1,false);
@@ -30,7 +30,7 @@ function<void()> kosaraju = [&]() -> void {
         roots[u] = root;
     }
   }
-  for(int v = 0; v < V; v++)
+  for(int v = 1; v <= V; v++)
     for(int u : adj[v])
       if( roots[u] != roots[v] )
         condensed[ roots[v] ].push_back( roots[u] );

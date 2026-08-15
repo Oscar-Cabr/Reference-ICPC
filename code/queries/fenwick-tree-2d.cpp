@@ -8,11 +8,11 @@ struct BIT2D {
       for(int j = 0; j < m; j++)
         update(i+1,j+1,mat[i][j]);
   }
-  void update(int x, int y, T val) const {
+  void update(int x, int y, T val) {
     while( x <= n ) {
       int j = y;
       while( j <= m ) {
-        tree[x][y] += val;
+        tree[x][j] += val;
         j += j & -j;
       }
       x += x & -x;
@@ -23,7 +23,7 @@ struct BIT2D {
     while( x > 0 ) {
       int j = y;
       while( j > 0 ) {
-        pref += tree[x][y];
+        pref += tree[x][j];
         j -= j & -j;
       }
       x -= x & -x;
