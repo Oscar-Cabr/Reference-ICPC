@@ -1,5 +1,4 @@
 vvpll graph(n+1,vpll());
-vector<bool> visited(n+1,false);
 function<vll(int)> dijkstra = [&](int source) -> vll {
    vll dist(n+1,INF);
    priority_queue<pll,vpll,greater<pll>> pq;

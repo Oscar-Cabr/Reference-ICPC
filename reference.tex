@@ -263,12 +263,6 @@ int myCeil(long long a, long long b) {
 
 \lstinputlisting[
   style=cpp,
-  caption={Binary Search implementation for searching an element in the interval \ensuremath{\big( numbers_{i-1}, numbers_i \big]}. Originally used on Codeforces problem 474 - B (Worms). Returns the index where \texttt{target} was found. Binary Search works on \ensuremath{O(\log_2(n))}, let \ensuremath{n} be the size of the container.},
-  label=lst:worms-binary-search  
-]{code/misc/worms-binary-search.cpp}
-
-\lstinputlisting[
-  style=cpp,
   caption={Implementation of Binary Search in the Answer. Originally used on CSES problem \textit{Factory Machines}. Binary Search works on \ensuremath{O(\log_2(n))}, let \ensuremath{n} be the size of the container.},
   label=lst:binary-search-in-the-answer 
 ]{code/misc/binary-search-in-the-answer.cpp}
@@ -415,12 +409,6 @@ BIT basically obtains ranges by substracting prefixes: $range(l,r) = prefix(r) *
 
 \lstinputlisting[
   style=cpp,
-  caption={Recursive implementation of DFS graph traversal over a graph represented as a AdjacencyList on vector of vectors. DFS runs in $O(|V| + |E|)$.},
-  label=lst:dfs-recursive
-]{code/graphs/dfs-recursive.cpp}
-
-\lstinputlisting[
-  style=cpp,
   caption={Iterative implementation of DFS graph traversal over a graph represented as a AdjacencyList on vector of vectors. DFS runs in $O(|V| + |E|)$.},
   label=lst:dfs-iterative
 ]{code/graphs/dfs-iterative.cpp}
@@ -431,21 +419,9 @@ BIT basically obtains ranges by substracting prefixes: $range(l,r) = prefix(r) *
   label=lst:dfs-lambda
 ]{code/graphs/dfs-lambda.cpp}
 
-\lstinputlisting[
-  style=cpp,
-  caption={DFS implementation with a lambda function implemented with a map instead of vector of vectors, and a set to track visited nodes. DFS runs in $O(|V| + |E|)$.},
-  label=lst:dfs-lambda-map
-]{code/graphs/dfs-lambda-map.cpp}
-
 \subsection{Shortest Path}
 
 \subsubsection{Dijkstra's Algorithm}
-
-\lstinputlisting[
-  style=cpp,
-  caption={Iterative implementation of Dijkstra's Algorithm for shortest path. Returns a vector with the shortest distance to every other vertex in the graph. $O(|E|\times log_2(|V|))$. Doesn't work with negative weights.},
-  label=lst:dijkstra
-]{code/graphs/dijkstra.cpp}
 
 \lstinputlisting[
   style=cpp,
