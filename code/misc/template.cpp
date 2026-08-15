@@ -12,6 +12,8 @@ typedef vector<ii> vii;
 typedef vector<vi> vvi;
 typedef vector<vii> vvii;
 typedef vector<pll> vpll;
+typedef vector<vll> vvll;
+typedef vector<vpll> vvpll;
 typedef unsigned int uint;
 typedef unsigned long long ull;
 #define fi first

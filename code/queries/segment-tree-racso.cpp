@@ -46,4 +46,4 @@ class Segment_tree {
 Segment_tree st(n);
 st.build(v,1,0,n-1);
 st.update(1,a-1,0,n-1,b);
-st.query(1,a-1,b-1,0,n-1));
+st.query(1,a-1,b-1,0,n-1);
